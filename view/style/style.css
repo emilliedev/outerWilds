@@ -23,28 +23,38 @@
         font-style: normal;
     }
 
+    @font-face {
+        font-family: 'Outer Light';
+        src: url(../assets/fonts/itc-serif-gothic-light-588cee8a0bfb1.otf) format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Outer Regular';
+        src: url(../assets/fonts/itc-serif-gothic-regular-588cef4e7134b.otf) format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
 /*  */
 
 /* MAIN BODY CONFIG */
 
     .body {
-        /* padding: 50px 50px; */
-        /* position: fixed; */
         position: relative;
         margin:0;
 
         top:0;
         left:0;
+    }
 
+    .body-container {
         width: 100%;
-        height: 300vh;
+        height: 500vh;
 
-        background-image: url(../assets/background/stars.png), linear-gradient( rgba(20,67,107,1) 0%, rgba(41,80,97,1) 52%, rgba(11,30,38,1) 100%);
+        background-image: url(../assets/background/stars.png), linear-gradient(rgba(0,0,0,1) 25%,rgba(20,67,107,1) 60%, rgb(29, 20, 102) 95%,rgb(51, 40, 133) 100%);
         background-repeat: repeat;
-        background-size: 200vh;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
     }
 
 /*  */
@@ -52,7 +62,8 @@
 /* CONTAINER DIV GLOBAL */
 
     .container {
-        width: 80%;
+        width: 85%;
+        margin: 0 auto;
     }
 
 /*  */
@@ -66,6 +77,7 @@
         padding-bottom: 30px;
         width: 100%;
         align-items: center;
+        position: absolute;
     }
 
     .menu-items {
@@ -83,14 +95,19 @@
         align-items: center;
     }
 
+    .menu-links section {
+        font-family: 'Outer Regular', sans-serif;
+    }
+
     .sticky {
         -webkit-transition: 0.3s;
         transition: 1s;
         z-index: 2; 
         width: 100%;
         position: fixed;
-        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         backdrop-filter: blur( 8px );
+        background-color: rgba(0, 0, 0, 0.346);
         -webkit-backdrop-filter: blur( 8px );
     }
 
@@ -120,20 +137,75 @@
 
 /* MAIN  */
 
-    
+    /* HERO */
 
-/*  */
+        .hero {
+            background-image: url(../assets/background/wallpaper.png);
+            padding: 500px 0;
+            width: 100vw;
+            background-size: cover;
+        }
 
-/* SUPERNOVA  */
+        .hero-text p {
+            color: white;
+            font-family: 'Outer', sans-serif;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+        }
+
+    /*  */
+
+    /* SOBRE  */
+
+        .about-container {
+            color: white;
+        }
+
+        .about-container p {
+            font-family: 'Outer', sans-serif;
+        }
+
+        .title-5rem {
+            font-size: 5rem;
+            font-family: 'Outer', sans-serif;
+            text-align: center;
+            margin-top: 20rem;
+        }
+
+        .orange-title {
+            color: #F97B1F; 
+            font-family: 'Outer', sans-serif;
+        }
+
+        .about-content section p {
+            font-family: 'Outer Regular', sans-serif;
+            font-size: 2rem;
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+    /*  */
+
+    /* SUPERNOVA  */
 
     .supernova {
         width: 100vw;
         height: 2000px;
-        background: radial-gradient(50% 50% at 50% 50%, #B0EFFF 0%, rgba(0, 202, 255, 0) 100%);
+        background: radial-gradient(50% 50% at 50% 50%, #B0EFFF 0%, rgba(0, 204, 255, 0) 100%);
         position: absolute;
         bottom: 0;
         right: 0;
     }
 
 /*  */
+
+/*  */
+
+
 
