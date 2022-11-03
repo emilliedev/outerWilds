@@ -1,0 +1,97 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+/*  */
+
+/* FONT  */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+@font-face {
+    font-family: 'Outer';
+    src: url(../assets/fonts/itc-serif-gothic-black-588d43e1e915d.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outer Light';
+    src: url(../assets/fonts/itc-serif-gothic-light-588cee8a0bfb1.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outer Regular';
+    src: url(../assets/fonts/itc-serif-gothic-regular-588cef4e7134b.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  */
+
+/* FONT FORMAT  */
+
+    .title-5rem {
+        font-size: 5rem;
+        font-family: 'Outer', sans-serif;
+        text-align: center;
+    }
+
+    .color-white {
+        color: white;
+    }
+
+    .text-align-center {
+        text-align: center;
+    }
+
+    .outer-regular-text {
+        font-family: 'Outer Regular', sans-serif;
+    }
+
+    .outer-black-text {
+        font-family: 'Outer', sans-serif;
+    }
+
+    .outer-light-text {
+        font-family: 'Outer Light', sans-serif;
+    }
+
+    .regular-text {
+        font-size: 2rem;
+    }
+
+    .color-orange {
+        color: #F97B1F;
+    }
+
+    .weight-bold {
+        font-weight: 800;
+    }
+/*  */
+
+/* MARGIN  */
+
+    .mt-20rem {
+        margin-top: 20rem;
+    }
+
+    .mt-10rem {
+        margin-top: 10rem;
+    }
+
+    .mt-5rem {
+        margin-top: 5rem;
+    }
+
+/*  */

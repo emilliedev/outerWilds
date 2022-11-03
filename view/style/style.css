@@ -1,44 +1,3 @@
-/* RESET */
-
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Manrope', sans-serif;
-    }
-
-    html {
-        overflow-x: hidden;
-    }
-
-/*  */
-
-/* FONT  */
-
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
-    @font-face {
-        font-family: 'Outer';
-        src: url(../assets/fonts/itc-serif-gothic-black-588d43e1e915d.otf) format('opentype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Outer Light';
-        src: url(../assets/fonts/itc-serif-gothic-light-588cee8a0bfb1.otf) format('opentype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Outer Regular';
-        src: url(../assets/fonts/itc-serif-gothic-regular-588cef4e7134b.otf) format('opentype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-/*  */
-
 /* MAIN BODY CONFIG */
 
     .body {
@@ -51,9 +10,9 @@
 
     .body-container {
         width: 100%;
-        height: 500vh;
+        height: 2000vh;
 
-        background-image: url(../assets/background/stars.png), linear-gradient(rgba(0,0,0,1) 25%,rgba(20,67,107,1) 60%, rgb(29, 20, 102) 95%,rgb(51, 40, 133) 100%);
+        background-image: url(../assets/background/stars.png), linear-gradient(rgb(6, 2, 44) 0%, rgb(0,0,0) 17%, rgb(0, 255, 255) 30%,  rgb(51, 40, 133) 100%);
         background-repeat: repeat;
     }
 
@@ -90,8 +49,8 @@
 
     .menu-links {
         display: flex;
-        width: 40%; 
-        justify-content: space-evenly;
+        width: 30%; 
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -171,13 +130,6 @@
             font-family: 'Outer', sans-serif;
         }
 
-        .title-5rem {
-            font-size: 5rem;
-            font-family: 'Outer', sans-serif;
-            text-align: center;
-            margin-top: 20rem;
-        }
-
         .orange-title {
             color: #F97B1F; 
             font-family: 'Outer', sans-serif;
@@ -190,7 +142,60 @@
             text-align: center;
         }
 
+        .planetary-container {
+            display: flex;
+            justify-content: center;
+        }
+
     /*  */
+
+        /* HEARTHIANS - OUTER WILDS VENTURES  */
+
+            .hearthians-content {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .about-hearthians {
+                margin-left: 3rem;
+            }
+
+        /*  */
+
+    /* HISTÓRIA  */
+
+    .space-background {
+        width: 100%;
+        background-image: url(../assets/background/space.png);
+        background-repeat: repeat;
+        padding: 9000px 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .space-container {
+        position: absolute;
+        top: 0;
+    }
+
+        /* RECANTO LENHOSO */
+
+            .planeta-img {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            li {
+                font-family: 'Outer Regular', sans-serif;   
+            }
+
+        /*  */
+
+
+    /*  */
+
+        
 
     /* SUPERNOVA  */
 
