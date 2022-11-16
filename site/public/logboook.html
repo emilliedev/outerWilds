@@ -19,16 +19,16 @@
                     <input type="text" name="iptTitulo" id="iptTitulo">
                 </section>
                 <select id="slcLugar">
-                    <!-- <option value="0">Recanto Lenhoso</option>
-                    <option value="1">Gêmeo Cálido</option>
-                    <option value="2">Gêmeo Cinzento</option>
-                    <option value="3">Vale Incerto</option>
-                    <option value="4">Abrolho Sombrio</option>
-                    <option value="5">Profundezas do Gigante</option>
-                    <option value="6">Lua Quântica</option>
-                    <option value="7">Estação Solar</option>
-                    <option value="8">Cometa Xereta</option>
-                    <option value="9">Luzeiro do Vale</option> -->
+                    <option value="1">Recanto Lenhoso</option>
+                    <option value="2">Gêmeo Cálido</option>
+                    <option value="3">Gêmeo Cinzento</option>
+                    <option value="4">Vale Incerto</option>
+                    <option value="5">Abrolho Sombrio</option>
+                    <option value="6">Profundezas do Gigante</option>
+                    <option value="7">Lua Quântica</option>
+                    <option value="8">Estação Solar</option>
+                    <option value="9">Cometa Xereta</option>
+                    <option value="10">Luzeiro do Vale</option>
                 </select>
             </section>
             <section>
@@ -51,16 +51,14 @@
 
 <script>
 
-    // for (var i = 5; i < 10; i++) {
-
-    //     slcLugar.innerHTML += `<option value="1">${}</option>` 
-    // }
-
+   
     function publicar() {
-        var idDiario = sessionStorage.ID_DIARIO;
+
+        var idDiario = 15;
+        var lugar = slcLugar.value;
 
         var corpo = {
-            idDiario: idDiario,
+            lugar: lugar,
             titulo: postForm.iptTitulo.value,
             descricao: postForm.txtDescription.value
         }
@@ -77,7 +75,7 @@
 
             if (resposta.ok) {
                 window.alert("Post realizado com sucesso com diário de ID: " + idDiario + "!");
-                window.location = "/logboook.html";
+                //window.location = "/logboook.html";
                 // limparFormulario();
                 //finalizarAguardar();
                     sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;

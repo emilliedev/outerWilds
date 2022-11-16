@@ -69,13 +69,14 @@ function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
     var idDiario = req.body.diario;
+    var lugar = req.body.lugar;
 
     if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else {
-        diarioModel.publicar(titulo, descricao, idDiario)
+        diarioModel.publicar(titulo, descricao, lugar)
             .then(
                 function (resultado) {
                     res.json(resultado);
