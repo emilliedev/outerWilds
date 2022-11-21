@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Outer Wilds</title>
+</head>
+<body>
+    <div>Apelido</div>
+    <div><input type="text" id="iptApelido"></div>
+    <div>Senha</div>
+    <div><input type="password" id="iptSenha"></div>
+    <div>Confirmar senha</div>
+    <div><input type="password" id="iptConfirmarSenha"></div>
+    <div>Planeta favorito</div>
+    <div>
+        <select id="slcLugar">
+            <option value="1">Recanto Lenhoso</option>
+            <option value="2">Gêmeo Cálido</option>
+            <option value="3">Gêmeo Cinzento</option>
+            <option value="4">Vale Incerto</option>
+            <option value="5">Abrolho Sombrio</option>
+            <option value="6">Profundezas do Gigante</option>
+            <option value="7">Lua Quântica</option>
+            <option value="8">Estação Solar</option>
+            <option value="9">Cometa Xereta</option>
+            <option value="10">Luzeiro do Vale</option>
+        </select>
+    </div>
+    <div>
+        <a href="login.html">
+            <button>Cadastrar</button>
+        </a>
+    </div>
+    <div>
+        <a href="login.html">Já tem conta? Entre cliando aqui!</a>
+    </div>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var apelidoVar = iptApelido.value;
+        var senhaVar = iptSenha.value;
+        var confirmacaoSenhaVar = iptConfirmarSenha.value;
+        var lugarVar = Number(iptLugar.value);
+
+        if (apelidoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                apelidoServer: apelidoVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                lugarServer: lugarVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
