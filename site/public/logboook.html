@@ -78,6 +78,7 @@
                 //window.location = "/logboook.html";
                 // limparFormulario();
                 //finalizarAguardar();
+                    sessionStorage.FK_LUGAR = json.fkLugar;
                     sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
                     sessionStorage.TITULO_DIARIO = json.tituloDiario;
                     sessionStorage.ID_DIARIO = json.idDiario;
@@ -103,27 +104,27 @@
 
     // }
 
-    // function deletar(idDiario) {
-    //     console.log("Criar função de apagar post escolhido - ID" + idDiario);
-    //     fetch(`/avisos/deletar/${idDiario}`, {
-    //         method: "DELETE",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         }
-    //     }).then(function (resposta) {
+    function deletar(idDiario) {
+        console.log("Criar função de apagar post escolhido - ID" + idDiario);
+        fetch(`/diario/deletar/${idDiario}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
 
-    //         if (resposta.ok) {
-    //             window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-    //             window.location = "/dashboard/mural.html"
-    //         } else if (resposta.status == 404) {
-    //             window.alert("Deu 404!");
-    //         } else {
-    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-    //         }
-    //     }).catch(function (resposta) {
-    //         console.log(`#ERRO: ${resposta}`);
-    //     });
-    // }
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "logboook.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 
     function atualizarFeed() {
         //aguardar();
@@ -161,7 +162,7 @@
 
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idDiario + "</b>";
+                        divDescricao.innerHTML = "Local: <b>" + publicacao.lugar + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
                         btnEditar.innerHTML = "Editar";
