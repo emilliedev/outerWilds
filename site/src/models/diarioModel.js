@@ -8,13 +8,17 @@ function listar() {
     d.titulo,
     d.descricao,
     d.fkLugar,
+    d.fkUsuario,
     l.idLugar,
     l.nome
+    u.idUsuario 
     FROM Diario d
 	INNER JOIN Lugar l 
-    ON d.fkLugar = l.idLugar;
+    ON d.fkLugar = l.idLugar
+    INNER JOIN Usuario u ON d.fkUsuario = u.idUsuario;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("ID DO USUARIO: \n" + idUsuario);
     return database.executar(instrucao);
 }
 
@@ -45,21 +49,25 @@ function listarPorUsuario(idUsuario) {
             d.titulo,
             d.descricao,
             d.fkLugar,
+            d.fkUsuario,
             l.idLugar AS idLugar,
             l.nome
+            u.idUsuario
         FROM Diario d
             INNER JOIN Lugar l
                 ON d.fkLugar = l.idLugar
-        WHERE l.idLugar = ${idLugar};
+            INNER JOIN Usuario u
+                ON d.fkUsuario = u.idUsuario
+        WHERE u.idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function publicar(titulo, descricao, lugar) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao);
+function publicar(titulo, descricao, lugar, idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucao = `
-        INSERT INTO Diario (titulo, descricao, fkLugar) VALUES ('${titulo}', '${descricao}', '${lugar}');
+        INSERT INTO Diario (titulo, descricao, fkLugar, fkUsuario) VALUES ('${titulo}', '${descricao}', '${lugar}', '${idUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

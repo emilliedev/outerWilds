@@ -54,7 +54,7 @@
    
     function publicar() {
 
-        var idDiario = 15;
+        var idUsuario = sessionStorage.ID_USUARIO;  
         var lugar = slcLugar.value;
 
         var corpo = {
@@ -63,7 +63,7 @@
             descricao: postForm.txtDescription.value
         }
 
-        fetch(`/diario/publicar/${idDiario}`, {
+        fetch(`/diario/publicar/${idUsuario}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -74,8 +74,8 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso com diário de ID: " + idDiario + "!");
-                window.location = "/logboook.html";
+                window.alert("Post realizado com sucesso com diário de ID: " + idUsuario + "!");
+                // window.location = "/logboook.html";
                 // limparFormulario();
                 //finalizarAguardar();
                     sessionStorage.FK_LUGAR = json.fkLugar;

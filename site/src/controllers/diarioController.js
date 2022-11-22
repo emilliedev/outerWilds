@@ -20,9 +20,10 @@ function listar(req, res) {
 }
 
 function listarPorUsuario(req, res) {
-    var idLugar = req.params.idLugar;
+    // var idLugar = req.params.idLugar;
+    var idUsuario = req.params.idUsuario;
 
-    diarioModel.listarPorUsuario(idLugar)
+    diarioModel.listarPorUsuario(idUsuario)
         .then(
             function (resultado) {
                 if (resultado.length > 0) {
@@ -68,7 +69,8 @@ function pesquisarDescricao(req, res) {
 function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    var idDiario = req.body.diario;
+    // var idDiario = req.body.diario;
+    var idUsuario = req.body.usuario;
     var lugar = req.body.lugar;
 
     if (titulo == undefined) {
@@ -76,7 +78,7 @@ function publicar(req, res) {
     } else if (descricao == undefined) {
         res.status(400).send("A descrição está indefinido!");
     } else {
-        diarioModel.publicar(titulo, descricao, lugar)
+        diarioModel.publicar(titulo, descricao, lugar, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
