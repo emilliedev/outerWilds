@@ -70,7 +70,7 @@ function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
     // var idDiario = req.body.diario;
-    var idUsuario = req.body.usuario;
+    var idUsuario = req.body.idUsuario;
     var lugar = req.body.lugar;
 
     if (titulo == undefined) {

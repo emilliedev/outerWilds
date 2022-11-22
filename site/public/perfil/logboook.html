@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scripts/charCounter.js"></script>
+
     <title>Diário de Bordo | Outer Wilds</title>
 </head>
 
@@ -32,7 +32,7 @@
                 </select>
             </section>
             <section>
-                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription" cols="30"
+                <textarea name="txtDescription" id="txtDescription" cols="30"
                 maxlength="250" rows="5"></textarea>
                 <div class="contador-container">
                     <section id="contador500">500</section>
@@ -52,18 +52,19 @@
 <script>
 
    
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
     function publicar() {
-
-        var idUsuario = sessionStorage.ID_USUARIO;  
+        console.log(idUsuario)
         var lugar = slcLugar.value;
 
         var corpo = {
             lugar: lugar,
             titulo: postForm.iptTitulo.value,
-            descricao: postForm.txtDescription.value
+            descricao: postForm.txtDescription.value,
+            idUsuario: idUsuario
         }
 
-        fetch(`/diario/publicar/${idUsuario}`, {
+        fetch(`/diario/publicar`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -131,7 +132,7 @@
 
 
 
-        fetch("/diario/listar").then(function (resposta) {
+        fetch(`/diario/listar/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");

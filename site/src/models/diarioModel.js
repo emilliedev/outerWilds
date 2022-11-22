@@ -51,7 +51,7 @@ function listarPorUsuario(idUsuario) {
             d.fkLugar,
             d.fkUsuario,
             l.idLugar AS idLugar,
-            l.nome
+            l.nome,
             u.idUsuario
         FROM Diario d
             INNER JOIN Lugar l
