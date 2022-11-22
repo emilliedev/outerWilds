@@ -5,35 +5,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../scripts/charCounter.js"></script>
+
     <title>Diário de Bordo | Outer Wilds</title>
 </head>
 
 <body onload="atualizarFeed()">
-    <a href="index.html">HOME</a>
+    <a href="../index.html">HOME</a>
     <div>
-        <form id="postForm" method="post" onsubmit="return publish()">
+        <form id="postForm" method="post" onsubmit="return publicar()">
             <section>
                 <section>
                     <span>Título</span>
-                    <input type="text" id="iptTitle">
+                    <input type="text" name="iptTitulo" id="iptTitulo">
                 </section>
                 <select id="slcLugar">
-                    <option value="0">Recanto Lenhoso</option>
-                    <option value="1">Gêmeo Cálido</option>
-                    <option value="2">Gêmeo Cinzento</option>
-                    <option value="3">Vale Incerto</option>
-                    <option value="4">Abrolho Sombrio</option>
-                    <option value="5">Profundezas do Gigante</option>
-                    <option value="6">Lua Quântica</option>
-                    <option value="7">Estação Solar</option>
-                    <option value="8">Cometa Xereta</option>
-                    <option value="9">Luzeiro do Vale</option>
+                    <option value="1">Recanto Lenhoso</option>
+                    <option value="2">Gêmeo Cálido</option>
+                    <option value="3">Gêmeo Cinzento</option>
+                    <option value="4">Vale Incerto</option>
+                    <option value="5">Abrolho Sombrio</option>
+                    <option value="6">Profundezas do Gigante</option>
+                    <option value="7">Lua Quântica</option>
+                    <option value="8">Estação Solar</option>
+                    <option value="9">Cometa Xereta</option>
+                    <option value="10">Luzeiro do Vale</option>
                 </select>
             </section>
             <section>
-                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription" cols="30"
-                    rows="10"></textarea>
+                <textarea name="txtDescription" id="txtDescription" cols="30"
+                maxlength="250" rows="5"></textarea>
                 <div class="contador-container">
                     <section id="contador500">500</section>
                 </div>
@@ -42,6 +42,8 @@
                 <button>Registrar</button>
             </section>
         </form>
+        <div id="feed_container" class="feed-container">
+        </div>
     </div>
 </body>
 
@@ -49,15 +51,20 @@
 
 <script>
 
+   
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
     function publicar() {
-        var idUsuario = sessionStorage.ID_USUARIO;
+        console.log(idUsuario)
+        var lugar = slcLugar.value;
 
         var corpo = {
-            titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
+            lugar: lugar,
+            titulo: postForm.iptTitulo.value,
+            descricao: postForm.txtDescription.value,
+            idUsuario: idUsuario
         }
 
-        fetch(`/avisos/publicar/${idUsuario}`, {
+        fetch(`/diario/publicar`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -68,10 +75,14 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-                window.location = "/dashboard/mural.html";
-                limparFormulario();
-                finalizarAguardar();
+                window.alert("Post realizado com sucesso com diário de ID: " + idUsuario + "!");
+                // window.location = "/logboook.html";
+                // limparFormulario();
+                //finalizarAguardar();
+                    sessionStorage.FK_LUGAR = json.fkLugar;
+                    sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
+                    sessionStorage.TITULO_DIARIO = json.tituloDiario;
+                    sessionStorage.ID_DIARIO = json.idDiario;
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -79,24 +90,24 @@
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            //finalizarAguardar();
         });
 
         return false;
 
     }
 
-    function editar(idAviso) {
-        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
-        console.log("cliquei em editar - " + idAviso);
-        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
-        window.location = "/dashboard/edicao-aviso.html"
+    // function editar(idDiario) {
+    //     sessionStorage.ID_POSTAGEM_EDITANDO = idDiario;
+    //     console.log("cliquei em editar - " + idDiario);
+    //     window.alert("Você será redirecionado à página de edição do aviso de id número: " + idDiario);
+    //     window.location = "/dashboard/edicao-aviso.html"
 
-    }
+    // }
 
-    function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
+    function deletar(idDiario) {
+        console.log("Criar função de apagar post escolhido - ID" + idDiario);
+        fetch(`/diario/deletar/${idDiario}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -105,7 +116,7 @@
 
             if (resposta.ok) {
                 window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "logboook.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -118,7 +129,10 @@
 
     function atualizarFeed() {
         //aguardar();
-        fetch("/avisos/listar").then(function (resposta) {
+
+
+
+        fetch(`/diario/listar/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
@@ -147,31 +161,30 @@
                         var btnDeletar = document.createElement("button");
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
+
+
+                        divDescricao.innerHTML = "Local: <b>" + publicacao.lugar + "</b>";
                         spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
                         btnEditar.innerHTML = "Editar";
                         btnDeletar.innerHTML = "Deletar";
 
                         divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        spanNome.className = "publicacao-nome";
+                        spanTitulo.id = "inputNumero" + publicacao.idDiario;
                         spanTitulo.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-descricao";
 
                         divButtons.className = "div-buttons"
 
                         btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+                        btnEditar.id = "btnEditar" + publicacao.idDiario;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idDiario})`);
 
                         btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+                        btnDeletar.id = "btnDeletar" + publicacao.idDiario;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idDiario})`);
 
                         divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
@@ -180,19 +193,19 @@
                         feed.appendChild(divPublicacao);
                     }
 
-                    finalizarAguardar();
+                    //finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            finalizarAguardar();
+            //finalizarAguardar();
         });
     }
 
     function testar() {
-        aguardar();
+        //aguardar();
 
         var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
 
@@ -201,7 +214,7 @@
         divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
         divResultado.innerHTML = formulario.get("descricao");
 
-        finalizarAguardar();
+        //finalizarAguardar();
 
         return false;
     }

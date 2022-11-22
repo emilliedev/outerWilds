@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/global.style.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Cadastro | Outer Wilds</title>
+</head>
+
+<body class="body">
+    <header class="navbar">
+        <div class="container">
+          <section class="menu-items">
+            <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds" class="logo-outer" /></a>
+            <section class="menu-links">
+              <a href="#astros"><section>Astros</section></a>
+              <a href="login.html"><section>Entrar</section></a>
+              <section>Menu</section>
+              <section>Menu</section>
+            </section>
+          </section>
+        </div>
+      </header>
+    <div class="body-container-register">
+              <main>
+            <div class="form-box">
+                <span class="register-title color-white">Cadastre-se</span>
+                <div class="campos color-white">
+                <div class="outer-regular-text mt-1rem">Apelido</div>
+                <div><input class="ipt-form" type="text" id="iptApelido"></div>
+                <div class="outer-regular-text mt-1rem">Senha</div>
+                <div><input class="ipt-form" type="password" id="iptSenha"></div>
+                <div class="outer-regular-text mt-1rem">Confirmar senha</div>
+                <div><input class="ipt-form" type="password" id="iptConfirmarSenha"></div>
+                <div>
+                    <div class="outer-regular-text mt-1rem">Qual é o seu planeta favorito?</div>
+                    <div><input class="ipt-form" type="text" id="slcLugar"></div>
+                </div>
+            </div>
+                <div class="mt-1-5rem">
+                    <button onclick="cadastrar()" class="button-register">Cadastrar</button>
+                </div>
+                <br><br><br>
+                <div>
+                    <a href="login.html" class="outer-regular-text register-link">Já tem conta? Entre cliando aqui!</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var apelidoVar = iptApelido.value;
+        var senhaVar = iptSenha.value;
+        var confirmacaoSenhaVar = iptConfirmarSenha.value;
+        var lugarVar = slcLugar.value;
+        console.log(apelidoVar, senhaVar, lugarVar, confirmacaoSenhaVar)
+
+        // if (apelidoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                apelidoServer: apelidoVar,
+                senhaServer: senhaVar,
+                lugarServer: lugarVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    // window.location = "login.html";
+                }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>
