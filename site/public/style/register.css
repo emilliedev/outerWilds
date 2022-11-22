@@ -1,0 +1,113 @@
+.body-container-register {
+    width: 100%;
+        height: 100vh;
+        /* background-image: url(../assets/background/stars.png), linear-gradient( rgb(0,0,0) 0%, rgb(0,0,0) 100%); */
+        background-image: url(../assets/background/stars.png), linear-gradient(rgb(6, 2, 44) 0%, #14436B 100%);
+        background-repeat: repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.body {
+    overflow: hidden !important;
+}
+
+.form-box {
+    background: rgba(107, 90, 218, 0.1);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    width: fit-content;
+    height: fit-content;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    transition: 0.5s;
+    background-repeat: repeat;
+}
+
+.form-box:hover {
+    background-image: url(../assets/background/stars.png);
+    background-size: cover;
+    scale: 1.03;
+}
+
+.register-title {
+    font-size: 4rem;
+    font-family: 'Outer', sans-serif;
+}
+
+.campos {
+    font-size: 1.5rem;
+}
+
+.ipt-form {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    text-align: center;
+    width: 300px;
+    color: var(--white);
+    height: 3rem;
+    font-family: 'Outer Regular';
+    font-size: 1.3rem;
+    transition: 0.5s;
+}
+
+.ipt-form:focus {
+    border: none;
+    outline: none;
+    scale: 1.05;
+}
+
+.button-register {
+    width: 300px;
+    padding: 10px;
+    background-color: var(--outer-purple);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    font-family: 'Outer Regular';
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.button-register:hover {
+    background-image: url(../assets/background/stars.png);
+    background-size: contain;
+    background-color: #08344897;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.register-link {
+    color: var(--outer-cian);
+    transition: 1s;
+    font-size: 1.2rem;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}

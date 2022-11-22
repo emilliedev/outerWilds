@@ -29,7 +29,7 @@ function entrar(req, res) {
     var senha = req.body.senhaServer;
 
     if (apelido == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu apelido está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {

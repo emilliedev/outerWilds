@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/global.style.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>Cadastro | Outer Wilds</title>
 </head>
-<body>
-    <div>Apelido</div>
-    <div><input type="text" id="iptApelido"></div>
-    <div>Senha</div>
-    <div><input type="password" id="iptSenha"></div>
-    <div>Confirmar senha</div>
-    <div><input type="password" id="iptConfirmarSenha"></div>
-    <div>Planeta favorito</div>
-    <div>
-        <select id="slcLugar">
-            <option value="1">Recanto Lenhoso</option>
-            <option value="2">Gêmeo Cálido</option>
-            <option value="3">Gêmeo Cinzento</option>
-            <option value="4">Vale Incerto</option>
-            <option value="5">Abrolho Sombrio</option>
-            <option value="6">Profundezas do Gigante</option>
-            <option value="7">Lua Quântica</option>
-            <option value="8">Estação Solar</option>
-            <option value="9">Cometa Xereta</option>
-            <option value="10">Luzeiro do Vale</option>
-        </select>
-    </div>
-    <div>
-        <a href="login.html">
-            <button>Cadastrar</button>
-        </a>
-    </div>
-    <div>
-        <a href="login.html">Já tem conta? Entre cliando aqui!</a>
+
+<body class="body">
+    <header class="navbar">
+        <div class="container">
+          <section class="menu-items">
+            <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds" class="logo-outer" /></a>
+            <section class="menu-links">
+              <a href="#astros"><section>Astros</section></a>
+              <a href="login.html"><section>Entrar</section></a>
+              <section>Menu</section>
+              <section>Menu</section>
+            </section>
+          </section>
+        </div>
+      </header>
+    <div class="body-container-register">
+              <main>
+            <div class="form-box">
+                <span class="register-title color-white">Cadastre-se</span>
+                <div class="campos color-white">
+                <div class="outer-regular-text mt-1rem">Apelido</div>
+                <div><input class="ipt-form" type="text" id="iptApelido"></div>
+                <div class="outer-regular-text mt-1rem">Senha</div>
+                <div><input class="ipt-form" type="password" id="iptSenha"></div>
+                <div class="outer-regular-text mt-1rem">Confirmar senha</div>
+                <div><input class="ipt-form" type="password" id="iptConfirmarSenha"></div>
+                <div>
+                    <div class="outer-regular-text mt-1rem">Qual é o seu planeta favorito?</div>
+                    <div><input class="ipt-form" type="text" id="slcLugar"></div>
+                </div>
+            </div>
+                <div class="mt-1-5rem">
+                    <button onclick="cadastrar()" class="button-register">Cadastrar</button>
+                </div>
+                <br><br><br>
+                <div>
+                    <a href="login.html" class="outer-regular-text register-link">Já tem conta? Entre cliando aqui!</a>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
+
 </html>
 
 <script>
     function cadastrar() {
-        aguardar();
+        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var apelidoVar = iptApelido.value;
         var senhaVar = iptSenha.value;
         var confirmacaoSenhaVar = iptConfirmarSenha.value;
-        var lugarVar = Number(iptLugar.value);
+        var lugarVar = slcLugar.value;
+        console.log(apelidoVar, senhaVar, lugarVar, confirmacaoSenhaVar)
 
-        if (apelidoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        // if (apelidoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        //     finalizarAguardar();
+        //     return false;
+        // }
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -71,7 +85,6 @@
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
                 apelidoServer: apelidoVar,
-                emailServer: emailVar,
                 senhaServer: senhaVar,
                 lugarServer: lugarVar
             })
@@ -80,29 +93,29 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "login.html";
+                    // window.location = "login.html";
                 }, "2000")
-                
-                limparFormulario();
-                finalizarAguardar();
+
+                // limparFormulario();
+                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>

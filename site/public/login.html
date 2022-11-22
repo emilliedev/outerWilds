@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +9,80 @@
 <body>
     <a href="register.html">CADASTRO</a>
     <div>Apelido</div>
-    <div><input type="text"></div>
+    <div><input type="text" id="iptApelido"></div>
     <div>Senha</div>
-    <div><input type="password"></div>
+    <div><input type="password" id="iptSenha"></div>
     <div>
-        <a href="logboook.html">
-            <button>Entrar</button>
-        </a>
+
+            <button onclick="entrar()">Entrar</button>
+
     </div>
 </body>
 </html>
+
+<script>
+
+
+    function entrar() {
+        // aguardar();
+
+        var apelidoVar = iptApelido.value;
+        var senhaVar = iptSenha.value;
+
+        if (apelidoVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // finalizarAguardar();
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", apelidoVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                apelidoServer: apelidoVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.APELIDO_USUARIO = json.apelido;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "perfil/logboook.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
