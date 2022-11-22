@@ -76,7 +76,7 @@ function publicar(titulo, descricao, lugar, idUsuario) {
 function editar(novaDescricao, idDiario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idDiario);
     var instrucao = `
-        UPDATE Diario SET descricao = '${novaDescricao}' WHERE id = ${idDiario};
+        UPDATE Diario SET descricao = '${novaDescricao}' WHERE idDiario = ${idDiario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

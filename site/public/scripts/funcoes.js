@@ -4,11 +4,8 @@ function validarSessao() {
 
     var apelido = sessionStorage.APELIDO_USUARIO;
 
-    var b_usuario = document.getElementById("b_usuario");
-
-    if (apelido != null && nome != null) {
+    if (apelido != null) {
         // window.alert(`Seja bem-vindo, ${nome}!`);
-        b_usuario.innerHTML = nome;
 
         // finalizarAguardar();
     } else {

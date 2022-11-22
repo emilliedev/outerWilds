@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/funcoes.js"></script>
+    <title>Edição Diário</title>
+</head>
+
+<body onload="validarSessao(), listarInfosDeUm()">
+    <a href="../index.html">HOME</a>
+    <div onclick="limparSessao()">SAIR</div>
+    <div>
+        <form id="postForm" method="post" onsubmit="return publicar()">
+            <section>
+                <section>
+                    <span>Título</span>
+                    <input type="text" name="iptTitulo" id="iptTitulo">
+                </section>
+                <select id="slcLugar">
+                    <option value="1">Recanto Lenhoso</option>
+                    <option value="2">Gêmeo Cálido</option>
+                    <option value="3">Gêmeo Cinzento</option>
+                    <option value="4">Vale Incerto</option>
+                    <option value="5">Abrolho Sombrio</option>
+                    <option value="6">Profundezas do Gigante</option>
+                    <option value="7">Lua Quântica</option>
+                    <option value="8">Estação Solar</option>
+                    <option value="9">Cometa Xereta</option>
+                    <option value="10">Luzeiro do Vale</option>
+                </select>
+            </section>
+            <section>
+                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription" cols="30"
+                    maxlength="250" rows="5"></textarea>
+                <div class="contador-container">
+                    <section id="contador500">500</section>
+                </div>
+            </section>
+            <section>
+                <button onclick="editar()">Editar</button>
+            </section>
+        </form>
+</body>
+
+</html>
+<script>
+    function listarInfosDeUm() {
+        console.log("Criar função de trazer informações de post escolhido");
+    }
+
+    function editar() {
+        fetch(`/diario/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                descricao: txtDescription.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario ID: " + sessionStorage.getItem("ID_USUARIO") + "!");
+                window.location = "./logboook.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+</script>
