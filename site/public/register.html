@@ -14,33 +14,34 @@
 <body class="body">
     <header class="navbar">
         <div class="container">
-          <section class="menu-items">
-            <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds" class="logo-outer" /></a>
-            <section class="menu-links">
-              <a href="#astros"><section>Astros</section></a>
-              <a href="login.html"><section>Entrar</section></a>
-              <section>Menu</section>
-              <section>Menu</section>
+            <section class="menu-items">
+                <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds"
+                        class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="index.html"><section>Home</section></a>
+                    <a href="login.html">
+                        <section>Entrar</section>
+                    </a>
+                </section>
             </section>
-          </section>
         </div>
-      </header>
+    </header>
     <div class="body-container-register">
-              <main>
+        <main>
             <div class="form-box">
                 <span class="register-title color-white">Cadastre-se</span>
                 <div class="campos color-white">
-                <div class="outer-regular-text mt-1rem">Apelido</div>
-                <div><input class="ipt-form" type="text" id="iptApelido"></div>
-                <div class="outer-regular-text mt-1rem">Senha</div>
-                <div><input class="ipt-form" type="password" id="iptSenha"></div>
-                <div class="outer-regular-text mt-1rem">Confirmar senha</div>
-                <div><input class="ipt-form" type="password" id="iptConfirmarSenha"></div>
-                <div>
-                    <div class="outer-regular-text mt-1rem">Qual é o seu planeta favorito?</div>
-                    <div><input class="ipt-form" type="text" id="slcLugar"></div>
+                    <div class="outer-regular-text mt-1rem">Apelido</div>
+                    <div><input class="ipt-form" type="text" id="iptApelido"></div>
+                    <div class="outer-regular-text mt-1rem">Senha</div>
+                    <div><input class="ipt-form" type="password" id="iptSenha"></div>
+                    <div class="outer-regular-text mt-1rem">Confirmar senha</div>
+                    <div><input class="ipt-form" type="password" id="iptConfirmarSenha"></div>
+                    <div>
+                        <div class="outer-regular-text mt-1rem">Qual é o seu planeta favorito?</div>
+                        <div><input class="ipt-form" type="text" id="slcLugar"></div>
+                    </div>
                 </div>
-            </div>
                 <div class="mt-1-5rem">
                     <button onclick="cadastrar()" class="button-register">Cadastrar</button>
                 </div>
@@ -98,7 +99,7 @@
                 // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    // window.location = "login.html";
+                    window.location = "login.html";
                 }, "2000")
 
                 // limparFormulario();

@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="../scripts/charCounter.js"></script>
+    <script src="../scripts/funcoes.js"></script>
     <title>Diário de Bordo | Outer Wilds</title>
 </head>
 
 <body onload="atualizarFeed()">
     <a href="../index.html">HOME</a>
+    <div onclick="limparSessao()">SAIR</div>
     <div>
         <form id="postForm" method="post" onsubmit="return publicar()">
             <section>
@@ -32,7 +34,7 @@
                 </select>
             </section>
             <section>
-                <textarea name="txtDescription" id="txtDescription" cols="30"
+                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription" cols="30"
                 maxlength="250" rows="5"></textarea>
                 <div class="contador-container">
                     <section id="contador500">500</section>
@@ -75,8 +77,8 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso com diário de ID: " + idUsuario + "!");
-                // window.location = "/logboook.html";
+                window.alert("Post realizado com sucesso com usuário de ID: " + idUsuario + "!");
+                window.location = "logboook.html";
                 // limparFormulario();
                 //finalizarAguardar();
                     sessionStorage.FK_LUGAR = json.fkLugar;
@@ -115,7 +117,7 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Registro deletado com sucesso");
                 window.location = "logboook.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

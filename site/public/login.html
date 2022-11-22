@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/global.style.css">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>Document</title>
 </head>
-<body>
-    <a href="register.html">CADASTRO</a>
-    <div>Apelido</div>
-    <div><input type="text" id="iptApelido"></div>
-    <div>Senha</div>
-    <div><input type="password" id="iptSenha"></div>
-    <div>
 
-            <button onclick="entrar()">Entrar</button>
-
-    </div>
+<body class="body">
+    <header class="navbar">
+        <div class="container">
+            <section class="menu-items">
+                <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds"
+                        class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="index.html"><section>Home</section></a>
+                    <a href="register.html"><section>Cadastrar-se</section></a>
+                </section>
+            </section>
+        </div>
+    </header>
+    <div class="body-container-register">
+        <main>
+            <div class="form-box">
+                <span class="register-title color-white">Entrar</span>
+                <div class="campos color-white">
+                    <div class="outer-regular-text mt-1rem">Apelido</div>
+                    <div><input class="ipt-form" type="text" id="iptApelido"></div>
+                    <div class="outer-regular-text mt-1rem">Senha</div>
+                    <div><input class="ipt-form" type="password" id="iptSenha"></div>
+                    <div>
+                    </div>
+                    <div class="mt-1-5rem">
+                        <button class="button-register" onclick="entrar()">Entrar</button>
+                    </div>
+                    <br><br>
+                <div>
+                    <a href="register.html" class="outer-regular-text register-link">Ainda não tem conta? Cadastre-se já!</a>
+                </div>
+                </div>
+            </div>
+        </main>
 </body>
+
 </html>
 
 <script>
@@ -59,7 +88,6 @@
                     console.log(JSON.stringify(json));
 
                     sessionStorage.APELIDO_USUARIO = json.apelido;
-                    sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
