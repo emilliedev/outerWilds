@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../scripts/funcoes.js"></script>
+    <title>Edição Diário</title>
+</head>
+
+<body>
+    <a href="../index.html">HOME</a>
+    <div onclick="limparSessao()">SAIR</div>
+    <div>
+        <section>
+            <section>
+                <span>Título</span>
+                <input type="text" name="iptTitulo" id="iptTitulo">
+            </section>
+            <select id="slcLugar">
+                <option value="1">Recanto Lenhoso</option>
+                <option value="2">Gêmeo Cálido</option>
+                <option value="3">Gêmeo Cinzento</option>
+                <option value="4">Vale Incerto</option>
+                <option value="5">Abrolho Sombrio</option>
+                <option value="6">Profundezas do Gigante</option>
+                <option value="7">Lua Quântica</option>
+                <option value="8">Estação Solar</option>
+                <option value="9">Cometa Xereta</option>
+                <option value="10">Luzeiro do Vale</option>
+            </select>
+        </section>
+        <section>
+            <textarea id="txtDescription" cols="30" maxlength="250" rows="5"></textarea>
+
+        </section>
+        <section>
+            <button onclick="edicao()">Editar</button>
+        </section>
+</body>
+
+</html>
+
+<script>
+    function edicao() {
+        var description = txtDescription.value;
+
+        fetch("/diario/edicaoDiario", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                descricao: description
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                console.log('FOI!!')
+                setTimeout(() => {
+                    window.location = 'perfil/logboook.html'
+                }, "2000")
+            return false;
+            }
+        })
+    }
+</script>

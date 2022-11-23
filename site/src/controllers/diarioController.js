@@ -1,5 +1,12 @@
 var diarioModel = require("../models/diarioModel");
 
+
+function edicaoDiario(req, res) {
+    var descricao =  req.body.descricao;
+
+    diarioModel.edicaoDiario(descricao)
+}
+
 function testar(req, res) {
     console.log("ENTRAMOS NO diarioController");
     res.send("ENTRAMOS NO DIARIO CONTROLLER");
@@ -139,5 +146,6 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
+    edicaoDiario,
     deletar
 }
