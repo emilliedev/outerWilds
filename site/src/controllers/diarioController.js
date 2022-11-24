@@ -1,5 +1,28 @@
 var diarioModel = require("../models/diarioModel");
 
+
+function edicaoDiario(req, res) {
+    var descricao =  req.body.descricao;
+    var idDiario = req.body.idDiario;
+
+    diarioModel.edicaoDiario(descricao, idDiario)
+
+    .then(
+        function (resultado) {
+            res.json(resultado);
+            console.log(idDiario)
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+    
+}
+
 function testar(req, res) {
     console.log("ENTRAMOS NO diarioController");
     res.send("ENTRAMOS NO DIARIO CONTROLLER");
@@ -139,5 +162,6 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
+    edicaoDiario,
     deletar
 }

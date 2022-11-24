@@ -31,4 +31,8 @@ router.delete("/deletar/:idDiario", function (req, res) {
     diarioController.deletar(req, res);
 });
 
+router.put("/edicaoDiario", function (req, res) {
+    diarioController.edicaoDiario(req, res);
+})
+
 module.exports = router;
