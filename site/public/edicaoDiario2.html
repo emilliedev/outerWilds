@@ -43,8 +43,11 @@
 </html>
 
 <script>
+    
+    sessionStorage.ID_POSTAGEM_EDITANDO = json.idDiario;
     function edicao() {
         var description = txtDescription.value;
+        var idDiario = sessionStorage.getItem('ID_POSTAGEM_EDITANDO');
 
         fetch("/diario/edicaoDiario", {
             method: "PUT",
@@ -52,13 +55,15 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                descricao: description
+                descricao: description,
+                idDiario: idDiario
             })
         }).then(function (resposta) {
             if (resposta.ok) {
                 console.log('FOI!!')
                 setTimeout(() => {
                     window.location = 'perfil/logboook.html'
+                    alert(idDiario)
                 }, "2000")
             return false;
             }

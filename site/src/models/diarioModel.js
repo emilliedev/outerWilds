@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
-function edicaoDiario(descricao) {
-    var instrucao = `UPDATE Diario SET descricao = '${descricao}' WHERE idDiario = 1`
+function edicaoDiario(descricao, idDiario) {
+    var instrucao = `UPDATE Diario SET descricao = '${descricao}' WHERE idDiario = ${idDiario};`
     return database.executar(instrucao);
 }
 
