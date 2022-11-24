@@ -67,6 +67,10 @@ html {
         color: white;
     }
 
+    .color-purple {
+        color: var(--outer-purple);
+    }
+
     .text-align-center {
         text-align: center;
     }
@@ -93,6 +97,10 @@ html {
 
     .weight-bold {
         font-weight: 800;
+    }
+
+    .text-align-center {
+        text-align: center;
     }
 /*  */
 
@@ -125,6 +133,7 @@ html {
 a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
 }
 
 /*  */

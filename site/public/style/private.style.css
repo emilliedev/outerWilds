@@ -1,0 +1,36 @@
+.body-container-private {
+    background-image: url(../assets/background/stars.png), linear-gradient(rgb(0,0,0) 0%, rgb(6, 2, 44) 90%,  rgb(51, 40, 133) 100%);
+    width: 100%;
+    height: 300vh;
+    animation: gradient 10s ease infinite;
+}
+
+main {
+    padding-top: 200px;
+}
+
+.hero-private {
+    background-image: url(../assets/background/fire-pit-background.jpg);
+    padding: 500px 0;
+    width: 100vw;
+    background-size: cover;
+}
+
+.hero-text {
+    text-align: center;
+}
+
+.area-diario {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.label-diario {
+
+}
+
+.ipt-form {
+    background: rgba(168, 0, 73, 0.3);
+    width: 60rem;
+}

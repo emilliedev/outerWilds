@@ -5,55 +5,108 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="../scripts/charCounter.js"></script>
     <script src="../scripts/funcoes.js"></script>
+    <script src="../scripts/stickyNavbar.js"></script>
+
+    <link rel="stylesheet" href="../style/global.style.css">
+    <link rel="stylesheet" href="../style/register.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/private.style.css">
     <title>Diário de Bordo | Outer Wilds</title>
 </head>
 
-<body onload="atualizarFeed()">
-    <a href="../index.html">HOME</a>
-    <div onclick="limparSessao()">SAIR</div>
-    <div>
-        <form id="postForm" method="post" onsubmit="return publicar()">
-            <section>
-                <section>
-                    <span>Título</span>
-                    <input type="text" name="iptTitulo" id="iptTitulo">
+<body onload="atualizarFeed()" class="body">
+    <div class="body-container-private">
+        <header class="navbar">
+            <div class="container">
+                <section class="menu-items">
+                    <a href="logboook.html"><img src="../assets/logo/recanto-logo.png" style="width: 150px;"
+                            alt="Logo outer wilds" class="logo-outer" /></a>
+                    <section class="menu-links">
+                        <a href="#astros">
+                            <section>Astros</section>
+                        </a>
+                        <a href="sobre.html">
+                            <section>Sobre</section>
+                        </a>
+                        <section>Interação</section>
+                        <section onclick="limparSessao()">Sair</section>
+                    </section>
                 </section>
-                <select id="slcLugar">
-                    <option value="1">Recanto Lenhoso</option>
-                    <option value="2">Gêmeo Cálido</option>
-                    <option value="3">Gêmeo Cinzento</option>
-                    <option value="4">Vale Incerto</option>
-                    <option value="5">Abrolho Sombrio</option>
-                    <option value="6">Profundezas do Gigante</option>
-                    <option value="7">Lua Quântica</option>
-                    <option value="8">Estação Solar</option>
-                    <option value="9">Cometa Xereta</option>
-                    <option value="10">Luzeiro do Vale</option>
-                </select>
-            </section>
-            <section>
-                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription" cols="30"
-                maxlength="250" rows="5"></textarea>
-                <div class="contador-container">
-                    <section id="contador500">500</section>
-                </div>
-            </section>
-            <section>
-                <button>Registrar</button>
-            </section>
-        </form>
-        <div id="feed_container" class="feed-container">
+            </div>
+        </header>
+        <div class="hero-private">
+            <div class="container">
+                <section class="hero-text">
+                    <p class="hero-title">Outer Wilds Ventures</p>
+                    <p class="hero-subtitle">
+                        Bem vindo recruta! Pronto para uma incrível experiência de investigações e descobertas?
+                    </p>
+                </section>
+            </div>
         </div>
-    </div>
+        <div>
+            <main>
+                <div class="container">
+                    <p class="mt-10rem color-white title-5rem">Diário de bordo</p>
+                    <div class="hearthians-text-container outer-regular-text color-white regular-text">
+                        <p class="outer-regular-text color-white text-align-center mt-5rem">Diário de bordo é um
+                            registro onde você poderá guardar todas suas descobertas e especificar onde viu, com direito
+                            a colocar título, escolher o lugar e a descrição, e tudo isso terá o horário e dia que foi
+                            publicado. Há também as funções de deletar e editar, divirta-se investigando e juntando as
+                            peças!
+                        </p>
+                    </div>
+
+
+
+
+
+
+                    <form id="postForm" method="post" onsubmit="return publicar()" class="area-diario mt-10rem">
+                        <section>
+                            <section>
+                                <span class="label-diario color-white outer-regular-text regular-text">Título</span><br>
+                                <input type="text" name="iptTitulo" id="iptTitulo" class="ipt-form">
+                            </section>
+                            <select id="slcLugar">
+                                <option value="1">Recanto Lenhoso</option>
+                                <option value="2">Gêmeo Cálido</option>
+                                <option value="3">Gêmeo Cinzento</option>
+                                <option value="4">Vale Incerto</option>
+                                <option value="5">Abrolho Sombrio</option>
+                                <option value="6">Profundezas do Gigante</option>
+                                <option value="7">Lua Quântica</option>
+                                <option value="8">Estação Solar</option>
+                                <option value="9">Cometa Xereta</option>
+                                <option value="10">Luzeiro do Vale</option>
+                            </select>
+                        </section>
+                        <section>
+                            <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription"
+                                cols="30" maxlength="500" rows="5"></textarea>
+                            <div class="contador-container">
+                                <section id="contador500">500</section>
+                            </div>
+                        </section>
+                        <section>
+                            <button>Registrar</button>
+                        </section>
+                    </form>
+                    <div id="feed_container" class="feed-container">
+                    </div>
+                </div>
+        </div>
+        </main>
 </body>
 
 </html>
 
 <script>
 
-   
+
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
     function publicar() {
         console.log(idUsuario)
@@ -81,10 +134,10 @@
                 window.location = "logboook.html";
                 // limparFormulario();
                 //finalizarAguardar();
-                    sessionStorage.FK_LUGAR = json.fkLugar;
-                    sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
-                    sessionStorage.TITULO_DIARIO = json.tituloDiario;
-                    sessionStorage.ID_DIARIO = json.idDiario;
+                sessionStorage.FK_LUGAR = json.fkLugar;
+                sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
+                sessionStorage.TITULO_DIARIO = json.tituloDiario;
+                sessionStorage.ID_DIARIO = json.idDiario;
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -100,11 +153,11 @@
     }
 
     function editar(idDiario) {
-         sessionStorage.ID_POSTAGEM_EDITANDO = idDiario;
-         console.log("cliquei em editar - " + idDiario);
-         window.alert("Você será redirecionado à página de edição do diário de id número: " + idDiario);
-         window.location = "../edicaoDiario2.html"
-     }
+        sessionStorage.ID_POSTAGEM_EDITANDO = idDiario;
+        console.log("cliquei em editar - " + idDiario);
+        window.alert("Você será redirecionado à página de edição do diário de id número: " + idDiario);
+        window.location = "../edicaoDiario2.html"
+    }
 
     function deletar(idDiario) {
         console.log("Criar função de apagar post escolhido - ID" + idDiario);
