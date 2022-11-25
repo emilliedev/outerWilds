@@ -6,7 +6,7 @@ function edicaoDiario(descricao, idDiario) {
 }
 
 function listar() {
-    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()\n\n\n O LUGAR É..."+lugar);
     var instrucao = `
     SELECT 
     d.idDiario,
@@ -15,7 +15,7 @@ function listar() {
     d.fkLugar,
     d.fkUsuario,
     l.idLugar,
-    l.nome
+    l.nome,
     u.idUsuario 
     FROM Diario d
 	INNER JOIN Lugar l 
@@ -28,7 +28,7 @@ function listar() {
 }
 
 function pesquisarDescricao(texto) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()\n\n\n O LUGAR É..."+lugar);
     var instrucao = `
         SELECT 
             d.idDiario AS idDiario,
@@ -49,15 +49,15 @@ function pesquisarDescricao(texto) {
 function listarPorUsuario(idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
     var instrucao = `
-        SELECT 
-            d.idDiario AS idDiario,
-            d.titulo,
-            d.descricao,
-            d.fkLugar,
-            d.fkUsuario,
-            l.idLugar AS idLugar,
-            l.nome,
-            u.idUsuario
+    SELECT 
+    d.idDiario,
+    d.titulo,
+    d.descricao,
+    d.fkLugar,
+    d.fkUsuario,
+    l.idLugar,
+    l.nome,
+    u.idUsuario 
         FROM Diario d
             INNER JOIN Lugar l
                 ON d.fkLugar = l.idLugar

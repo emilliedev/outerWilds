@@ -95,7 +95,6 @@
                         </div>
                     </div>
                 </div>
-                
             </main>
         </div>
 </body>
@@ -211,21 +210,24 @@
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
                         var divButtons = document.createElement("div");
+
                         var spanLugar = document.createElement("span");
 
                         btnEditar.innerHTML = "<img src='../assets/favicon/edit.svg'>"
                         btnDeletar.innerHTML = "<img src='../assets/favicon/delete.svg'>"
                         spanTitulo.innerHTML = "<span class= 'publicacao-label-titulo'>Título: </span> <span class='publicacao-titulo'>" + publicacao.titulo + "</span>"
                         divDescricao.innerHTML = "<span class= 'publicacao-label-titulo'>Descrição: <span class='publicacao-titulo'>" + publicacao.descricao + "</span>"
-                        spanLugar.innerHTML = "<span class= 'publicacao-label-titulo'>Local: </span> <span class='publicacao-titulo'>" + publicacao.lugar + "</span>"
+
+                        spanLugar.innerHTML = "<span class= 'publicacao-label-titulo'>Local: </span> <span class='publicacao-titulo'>" + publicacao.nome + "</span>"
                         
                         divButtons.className = "div-buttons"
-
                         divPublicacao.className = "publicacao mb-3rem";
                         spanTitulo.id = "inputNumero" + publicacao.idDiario;
                         spanTitulo.className = "publicacao-titulo";
+                        spanLugar.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-titulo mt-3rem mb-3rem";
 
+                        spanLugar.id = 'spanLugar'+publicacao.diario;
 
                         btnEditar.className = "publicacao-btn-editar"
                         btnEditar.id = "btnEditar" + publicacao.idDiario;
@@ -236,14 +238,14 @@
                         btnDeletar.setAttribute("onclick", `deletar(${publicacao.idDiario})`);
 
                         divPublicacao.appendChild(divButtons);
-                        //divPublicacao.appendChild(spanLugar);
                         divButtons.appendChild(btnEditar);
                         divButtons.appendChild(btnDeletar);
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
-                        
                         feed.appendChild(divPublicacao);
+
+                        divPublicacao.appendChild(spanLugar);
                     }
 
                     //finalizarAguardar();
