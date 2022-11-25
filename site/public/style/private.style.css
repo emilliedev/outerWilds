@@ -1,16 +1,29 @@
 .body-container-private {
-    background-image: url(../assets/background/stars.png), linear-gradient(rgb(0,0,0) 0%, rgb(6, 2, 44) 90%,  rgb(51, 40, 133) 100%);
+    background-image: linear-gradient( rgb(3, 94, 96) 0%, rgb(0, 45, 66) 24%, rgb(45, 23, 8) 68%,rgb(3, 94, 96) 100%);
     width: 100%;
-    height: 300vh;
-    animation: gradient 10s ease infinite;
+    background-size: 100% 700vh;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: top;
+	}
+	50% {
+		background-position: bottom;
+	}
+	100% {
+		background-position: top;
+	}
 }
 
 main {
     padding-top: 200px;
+    padding-bottom: 200px;
 }
 
 .hero-private {
-    background-image: url(../assets/background/fire-pit-background.jpg);
+    background-image: url(../assets/background/fire-pit-background.png);
     padding: 500px 0;
     width: 100vw;
     background-size: cover;
@@ -26,11 +39,111 @@ main {
     width: fit-content;
 }
 
-.label-diario {
-
-}
-
 .ipt-form {
     background: rgba(168, 0, 73, 0.3);
     width: 60rem;
+    padding: 30px;
+    height: 10px;
+}
+
+.textarea {
+    background: rgba(64, 0, 168, 0.3);
+    height: 150px; 
+    resize: none; 
+    text-align: start;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.contador-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.select {
+    background: rgb(0 168 28 / 30%);
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    outline: none;
+}
+
+.option {
+    background-color: rgb(0 38 10 / 82%);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    font-family: 'Outer Regular', sans-serif;
+}
+
+.form-section {
+    border: 2px rgba(255, 255, 255, 0.203) solid;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.button-100 {
+    width: 100%;
+    background: var(--outer-purple);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.container-feed {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 5rem;
+}
+
+.publicacao-label-titulo {
+    font-family: 'Outer';
+    color: skyblue;
+}
+
+.publicacao {
+    border: 2px solid rgba(255, 255, 255, 0.203);
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.publicacao-titulo {
+    color: white;
+    font-size: 1.7rem;
+    font-family: 'Outer Regular', sans-serif;
+}
+
+.div-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.publicacao-btn-editar {
+    margin-right: 1.5rem;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.publicacao-btn-editar:hover {
+    scale: 1.2;
+    filter: brightness(1.8);
+}
+
+.publicacao-btn-deletar:hover {
+    scale: 1.2;
+    filter: brightness(1.8);
+}
+
+.publicacao-btn-deletar {
+    margin-right: 1.5rem;
+    transition: 0.5s;
+    cursor: pointer;
 }
