@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas</title>
+</head>
+
+<body onload="listarRanking()">
+    <div id="divMetricas">
+        <div>Diários cadastrados</div>
+        <div id="campoDiariosCadastrados"></div>
+        <div>Lugares mais visitados</div>
+        <div id="campoLugaresMaisVisitados"></div>
+        <div>Seu perfil é</div>
+        <div id="campoPerfil"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
+    var lugar = sessionStorage.getItem('FK_LUGAR');
+    function listarRanking() {
+
+        fetch(`/diario/listarRanking/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("divMetricas");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                // feed.innerHTML = "";
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    var feed = document.getElementById("divMetricas");
+                    // feed.innerHTML = "";
+                    var lugarRanking = 1;
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+                        // alert(publicacao.qtdeLugar)
+
+                        var divLugar = document.createElement("div");
+                        var spanNome = document.createElement("span");
+
+                        spanNome.innerHTML = `<span>${lugarRanking}° Lugar </span> <span>${publicacao.nome}</span><br>`
+                        lugarRanking++
+
+                        divLugar.appendChild(spanNome)
+                        feed.appendChild(divLugar)
+                    }
+
+                    //finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+</script>

@@ -35,4 +35,8 @@ router.put("/edicaoDiario", function (req, res) {
     diarioController.edicaoDiario(req, res);
 })
 
+router.get("/listarRanking/:idUsuario", function (req, res) {
+    diarioController.listarRanking(req, res);
+})
+
 module.exports = router;

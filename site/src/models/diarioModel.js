@@ -70,6 +70,29 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
+function listarRanking(idUsuario) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPorUsuario()");
+    var instrucao = `
+    SELECT COUNT(fkLugar) AS qtdeLugar, nome FROM Diario 
+        INNER JOIN Lugar ON Diario.fkLugar = Lugar.idLugar
+        INNER JOIN Usuario ON Diario.fkUsuario = Usuario.idUsuario
+        WHERE idUsuario = ${idUsuario}
+        GROUP BY fkLugar
+        ORDER BY COUNT(fkLugar) DESC 
+        LIMIT 5;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+// SELECT COUNT(fkLugar) AS qtdeLugar, nome FROM Diario 
+// INNER JOIN Lugar ON Diario.fkLugar = Lugar.idLugar
+// INNER JOIN Usuario ON Diario.fkUsuario = Usuario.idUsuario
+// WHERE idUsuario = ${idUsuario}
+// GROUP BY fkLugar
+// ORDER BY COUNT(fkLugar) DESC 
+// LIMIT 5;
+
 function publicar(titulo, descricao, lugar, idUsuario) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucao = `
@@ -101,6 +124,7 @@ module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
+    listarRanking,
     publicar,
     editar,
     edicaoDiario,

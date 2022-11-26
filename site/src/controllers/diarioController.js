@@ -43,6 +43,34 @@ function listar(req, res) {
     });
 }
 
+
+function listarRanking(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+
+    diarioModel.listarRanking(idUsuario)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                    
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os a quantidade de diários: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function listarPorUsuario(req, res) {
     // var idLugar = req.params.idLugar;
     var idUsuario = req.params.idUsuario;
@@ -62,7 +90,7 @@ function listarPorUsuario(req, res) {
             function (erro) {
                 console.log(erro);
                 console.log(
-                    "Houve um erro ao buscar os diários: ",
+                    "Houve um erro ao buscar os a quantidade de diários: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
@@ -161,6 +189,7 @@ module.exports = {
     testar,
     listar,
     listarPorUsuario,
+    listarRanking,
     pesquisarDescricao,
     publicar,
     editar,
