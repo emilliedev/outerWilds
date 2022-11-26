@@ -63,7 +63,8 @@ function listarPorUsuario(idUsuario) {
                 ON d.fkLugar = l.idLugar
             INNER JOIN Usuario u
                 ON d.fkUsuario = u.idUsuario
-        WHERE u.idUsuario = ${idUsuario};
+        WHERE u.idUsuario = ${idUsuario}
+        ORDER BY idDiario DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
