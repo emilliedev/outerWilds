@@ -21,8 +21,37 @@ html {
     --outer-blue: #174E7D;
     --outer-green: #676E4C;
     --outer-orange: #FF7D25;
+    --yellow: #d6a200;
     --outer-cian: #00CAFF;
     --white: #DAF7FF;
+}
+
+.bg-purple {
+    background-color: var(--outer-purple)
+}
+
+.bg-blue {
+    background-color: var(--outer-blue)
+}
+
+.bg-orange {
+    background-color: var(--outer-orange)
+}
+
+.bg-deep-orange {
+    background-color: #d16517;
+}
+
+.bg-green {
+    background-color: var(--outer-green)
+}
+
+.bg-cian {
+    background-color: var(--outer-cian)
+}
+
+.bg-yellow {
+    background-color: var(--yellow)
 }
 
 

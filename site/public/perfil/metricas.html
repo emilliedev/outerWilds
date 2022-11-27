@@ -5,20 +5,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style/private.style.css">
+    <link rel="stylesheet" href="../style/register.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/global.style.css">
+
+    <script src="../scripts/charCounter.js"></script>
+    <script src="../scripts/funcoes.js"></script>
+    <script src="../scripts/stickyNavbar.js"></script>
+
+    <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
     <title>Métricas</title>
 </head>
 
-<body onload="listarRanking(), listarQtdeDiario()">
-    <div id="divMetricas">
-        <div>Diários cadastrados</div>
-        <div id="campoDiariosCadastrados">
-
+<body onload="listarRanking(), listarQtdeDiario(), grafico()" class="body">
+    <header class="navbar">
+        <div class="container">
+            <section class="menu-items">
+                <a href="logboook.html"><img src="../assets/logo/recanto-logo.png" style="width: 150px;"
+                        alt="Logo outer wilds" class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="logboook.html" class="scale-1-03">
+                        <section>Diário de Bordo</section>
+                    </a>
+                    <a href="metricas.html" class="scale-1-03">
+                        <section>Métricas</section>
+                    </a>
+                    <section class="scale-1-03">Votação</section>
+                    <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
+                </section>
+            </section>
         </div>
-        <div>Lugares mais visitados</div>
-        <div id="campoLugaresMaisVisitados"></div>
-        <div>Seu perfil é</div>
-        <div id="campoPerfil"></div>
+    </header>
+    <div class="body-container-private">
+        <main>
+            <div class="container">
+                <div class="hero-title outer-black-text color-white">Métricas por quantidade de diários</div>
+                <div class="kpi-container hero-subtitle mt-1-5rem">
+                    <div class="kpi bg-purple">
+                        <span>Menos que 6</span>
+                        <b>Recruta</b>
+                    </div>
+                    <div class="kpi bg-deep-orange">
+                        <span>Menos que 16</span>
+                        <b>Amador</b>
+                    </div>
+                    <div class="kpi bg-green">
+                        <span>Menos que 26</span>
+                        <b>Curioso</b>
+                    </div>
+                    <div class="kpi bg-blue">
+                        <span>Além</span>
+                        <b>Explorador</b>
+                    </div>
+                </div>
+                <div id="divMetricas" class="mt-5rem">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div class="hero-title outer-black-text color-white">Seu perfil é</div>
+                            <div id="campoPerfil" class="color-purple"></div>
+                        </div>
+                        <img src="../assets/gifs/fire-pit.gif" width="400px">
+                    </div>
+                    <div class="mt-5rem w-100 bg-blue color-white qtde-diario">
+                        <div class="outer-regular-text">Quantidade de diários cadastrados</div>
+                        <div id="campoDiariosCadastrados">
+                        </div>
+                    </div>
+                    <div class="ranking-container mt-5rem">
+                        <div class="ranking bg-yellow">
+                            <div><span class="outer-black-text">Ranking de lugares mais visitados</span><br><br>
+                                <div id="campoLugaresMaisVisitados">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grafico">
+                            <canvas id="myChart"></canvas>
+                        </div>
+
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                        <!-- <script>
+                            const ctx = document.getElementById('myChart');
+
+                            new Chart(ctx, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                    datasets: [{
+                                        label: '# of Votes',
+                                        data: [12, 19, 3, 5, 2, 3],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+                            });
+                        </script> -->
+
+                        
+                    </div>
+                </div>
+            </div>
     </div>
+    </main>
 </body>
 
 </html>
@@ -31,45 +127,43 @@
         fetch(`/diario/listarQtdeDiario/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    var feed = document.getElementById("campoDiariosCadastrados");
+                    var feed2 = document.getElementById("campoDiariosCadastrados");
                     var mensagem = document.createElement("span");
                     mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
+                    feed2.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
 
-                // feed.innerHTML = "";
+
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    var feed = document.getElementById("divMetricas");
-                    // feed.innerHTML = "";
-                
+                    var feed = document.getElementById("campoDiariosCadastrados");
+
+
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
-                        campoDiariosCadastrados.innerHTML = `<span>${publicacao.qtdeDiario}</span>`
+                        campoDiariosCadastrados.innerHTML = `<b class="outer-regular-text">${publicacao.qtdeDiario}</b>`
 
-                        feed.appendChild(campoDiariosCadastrados)
                     }
 
                     if (publicacao.qtdeDiario <= 5) {
-                        campoPerfil.innerHTML = 'Recruta'
-                    }else if (publicacao.qtdeDiario <= 15) {
-                        campoPerfil.innerHTML = 'Amador'
-                    }else if (publicacao.qtdeDiario <= 25) {
-                        campoPerfil.innerHTML = 'Curioso'
-                    }else {
-                        campoPerfil.innerHTML = 'Explorador'
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Recruta</b><div class="hero-subtitle outer-regular-text">Está precisando explorar mais, ein!</div>'
+                    } else if (publicacao.qtdeDiario <= 15) {
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Amador</b><div class="hero-subtitle outer-regular-text">Está melhorando... Você pode mais!</div>'
+                    } else if (publicacao.qtdeDiario <= 25) {
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Curioso</b><div class="hero-subtitle outer-regular-text">Está ficando experiente, um aventureiro!</div>'
+                    } else {
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Explorador</b><div class="hero-subtitle outer-regular-text">Você é um explorador nato! O universo em breve ficará pequeno para você</div>'
                     }
 
-                    //finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-        });     
+        });
     }
 
     function listarRanking() {
@@ -86,7 +180,7 @@
                 // feed.innerHTML = "";
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    var feed = document.getElementById("divMetricas");
+                    var feed = document.getElementById("campoLugaresMaisVisitados");
                     // feed.innerHTML = "";
                     var lugarRanking = 1;
                     for (let i = 0; i < resposta.length; i++) {
@@ -96,7 +190,7 @@
                         var divLugar = document.createElement("div");
                         var spanNome = document.createElement("span");
 
-                        spanNome.innerHTML = `<span>${lugarRanking}° Lugar </span> <span>${publicacao.nome}</span><br>`
+                        spanNome.innerHTML = `<br><b class='outer-black-text'>${lugarRanking}° </b> <span class='outer-regular-text'>${publicacao.nome}</span><br>`
                         lugarRanking++
 
                         divLugar.appendChild(spanNome)
@@ -113,6 +207,98 @@
         });
     }
 
+    function grafico(b) {
+        var b = sessionStorage.getItem('ID_USUARIO');
+        console.log('O ID USER É '+b)
+        
+        // alterarTitulo(idUsuario)
+
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
+
+        fetch(`/diario/grafico/${b}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGrafico(resposta, b);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
     
-   
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, b) {
+        
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Umidade',
+                data: [],
+                fill: false,
+                backgroundColor: ['#6A4D75','#174E7D','#676E4C','#FF7D25','#d6a200','#00CAFF'],
+                tension: 0.1
+            }]
+
+
+            // {
+            //     label: 'Temperatura',
+            //     data: [],
+            //     fill: false,
+            //     borderColor: 'rgb(199, 52, 52)',
+            //     tension: 0.1
+            // }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+        // for (var cont = 0; cont < resposta.length; cont++) {
+        //     datasets.label.push(resposta.nome)
+        //     console.log(label)
+        // }
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.nome);
+            dados.datasets[0].data.push(registro.qtdeLugar);
+            // dados.datasets[1].data.push(registro.temperatura);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'doughnut',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
 </script>

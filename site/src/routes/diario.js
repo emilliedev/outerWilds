@@ -43,4 +43,8 @@ router.get("/listarQtdeDiario/:idUsuario", function (req, res) {
     diarioController.listarQtdeDiario(req, res);
 })
 
+router.get("/grafico/:b", function (req, res) {
+    diarioController.grafico(req, res);
+})
+
 module.exports = router;
