@@ -5,31 +5,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/charCounter.js"></script>
     <script src="scripts/funcoes.js"></script>
+    <script src="scripts/stickyNavbar.js"></script>
 
     <link rel="stylesheet" href="style/global.style.css">
     <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/private.style.css">
+
+    <link rel="shortcut icon" href="assets/favicon/recanto-favicon.png" type="image/x-icon">
     <title>Edição Diário</title>
 </head>
 
-<body>
-    <a href="perfil/logboook.html"><img src="assets/favicon/voltar-botao.svg"></a>
-    <div>
-        <section>
-            <textarea id="txtDescription" cols="30" maxlength="250" rows="5"></textarea>
-
-        </section>
-        <section>
-            <button onclick="edicao()">Editar</button>
-        </section>
+<body class="body">
+    <header class="navbar">
+        <div class="container">
+            <section class="menu-items">
+                <a href="perfil/logboook.html"><img src="../assets/logo/recanto-logo.png" style="width: 150px;"
+                        alt="Logo outer wilds" class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="perfil/logboook.html" class="scale-1-03">
+                        <section>Diário de Bordo</section>
+                    </a>
+                    <a href="perfil/metricas.html" class="scale-1-03">
+                        <section>Métricas</section>
+                    </a>
+                    <section class="scale-1-03">Votação</section>
+                    <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
+                </section>
+            </section>
+        </div>
+    </header>
+    <div class="body-container-private-edicao">
+        <div class="padding">
+            <div class="container">
+                <div class="heading">
+                    <a href="perfil/logboook.html"><img src="assets/favicon/voltar-botao.svg"></a>
+                    <span class=" color-white outer-regular-text font-size-3" style="justify-self: center;">Edição do diário</span>
+                </div>
+                <section>
+                    <textarea id="txtDescription" onkeyup="charCount(this.value)" cols="30" maxlength="250" rows="5" class="ipt-form textarea"
+                        style="width: 96%;" maxlength="500"></textarea>
+                        <div class="contador-container">
+                            <section id="contador500" class="color-white outer-regular-text minor-text">500
+                            </section>
+                        </div>
+                </section>
+                <section>
+                    <button class="button-100 mt-3rem minor-text outer-black-text color-white scale-1-03"
+                        onclick="edicao()">Editar</button>
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
 
 <script>
-    
+
     sessionStorage.ID_POSTAGEM_EDITANDO = json.idDiario;
     function edicao() {
         var description = txtDescription.value;
@@ -51,7 +86,7 @@
                     window.location = 'perfil/logboook.html'
                     alert(idDiario)
                 }, "2000")
-            return false;
+                return false;
             }
         })
     }

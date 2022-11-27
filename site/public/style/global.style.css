@@ -174,3 +174,15 @@ a:hover {
 }
 
 /*  */
+
+.width-100 {
+    width: 100%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.font-size-3 {
+    font-size: 3rem;
+}

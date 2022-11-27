@@ -160,3 +160,23 @@ main {
 .none-results-span {
     font-size: 2rem;
 }
+
+.padding {
+    padding-top: 200px;
+}
+
+.body-container-private-edicao {
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient( rgb(3, 94, 96) 0%, rgb(0, 45, 66) 24%, rgb(45, 23, 8) 68%,rgb(3, 94, 96) 100%);
+    background-size: 100% 700vh;
+    animation: gradient 8s ease infinite;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
