@@ -99,6 +99,32 @@ function listarQtdeDiario(req, res) {
         );
 }
 
+function grafico(req, res) {
+    var idUsuario = req.params.b;
+
+    diarioModel.grafico(idUsuario)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                    console.log('O ID USER É '+idUsuario)
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os a quantidade de diários: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 function listarPorUsuario(req, res) {
     // var idLugar = req.params.idLugar;
@@ -224,5 +250,6 @@ module.exports = {
     editar,
     listarQtdeDiario,
     edicaoDiario,
+    grafico,
     deletar
 }

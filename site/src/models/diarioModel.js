@@ -79,7 +79,7 @@ function listarRanking(idUsuario) {
         WHERE idUsuario = ${idUsuario}
         GROUP BY fkLugar
         ORDER BY COUNT(fkLugar) DESC 
-        LIMIT 5;
+        LIMIT 10;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -122,6 +122,18 @@ function deletar(idDiario) {
     return database.executar(instrucao);
 }
 
+function grafico(idUsuario) {
+    var instrucao = `
+    SELECT COUNT(fkLugar) AS qtdeLugar, nome FROM Diario
+        INNER JOIN Lugar ON fkLugar = idLugar
+        INNER JOIN Usuario ON fkUsuario = idUsuario
+        WHERE idUsuario = ${idUsuario}
+    GROUP BY fkLugar;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listar,
     listarPorUsuario,
@@ -131,5 +143,6 @@ module.exports = {
     editar,
     edicaoDiario,
     listarQtdeDiario,
+    grafico,
     deletar
 }
