@@ -114,6 +114,11 @@
             font-size: 6rem;
         }
 
+        .hero-title span {
+            color: white;
+            font-family: 'Outer', sans-serif;
+        }
+
         .hero-subtitle {
             font-size: 2rem;
         }
