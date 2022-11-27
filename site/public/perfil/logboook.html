@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../style/register.css">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/private.style.css">
+
+    <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
     <title>Diário de Bordo | Outer Wilds</title>
 </head>
 
@@ -94,6 +96,7 @@
                 </div>
             </main>
         </div>
+        
 </body>
 
 </html>
@@ -185,9 +188,9 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = "<div class='none-results'><span class='none-results-span outer-regular-text regular-text'>Cri, cri, cri...</span><img src='../assets/gifs/fire-pit.gif' width='500px'></div>"
                     feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
+                    throw "<div class='none-results'><span class='none-results-span outer-regular-text regular-text'>Cri, cri, cri...</span><img src='../assets/gifs/fire-pit.gif' width='500px'></div>";
                 }
 
                 resposta.json().then(function (resposta) {

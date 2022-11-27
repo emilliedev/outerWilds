@@ -148,3 +148,15 @@ main {
     transition: 0.5s;
     cursor: pointer;
 }
+
+.none-results {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.none-results-span {
+    font-size: 2rem;
+}

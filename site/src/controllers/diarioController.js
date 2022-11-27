@@ -71,6 +71,35 @@ function listarRanking(req, res) {
         );
 }
 
+
+function listarQtdeDiario(req, res) {
+
+    var idUsuario = req.params.idUsuario;
+
+    diarioModel.listarQtdeDiario(idUsuario)
+        .then(
+            function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                    
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!");
+                }
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "Houve um erro ao buscar os a quantidade de diários: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
 function listarPorUsuario(req, res) {
     // var idLugar = req.params.idLugar;
     var idUsuario = req.params.idUsuario;
@@ -193,6 +222,7 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
+    listarQtdeDiario,
     edicaoDiario,
     deletar
 }
