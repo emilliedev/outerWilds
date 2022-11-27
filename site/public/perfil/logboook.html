@@ -26,8 +26,12 @@
                 <a href="logboook.html"><img src="../assets/logo/recanto-logo.png" style="width: 150px;"
                         alt="Logo outer wilds" class="logo-outer" /></a>
                 <section class="menu-links">
-                    <a href="logboook.html" class="scale-1-03"><section>Diário de Bordo</section></a>
-                    <a href="metricas.html" class="scale-1-03"><section>Métricas</section></a>
+                    <a href="logboook.html" class="scale-1-03">
+                        <section>Diário de Bordo</section>
+                    </a>
+                    <a href="metricas.html" class="scale-1-03">
+                        <section>Métricas</section>
+                    </a>
                     <section class="scale-1-03">Votação</section>
                     <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
                 </section>
@@ -35,17 +39,17 @@
         </div>
     </header>
     <div class="body-container-private">
-    <div class="hero-private">
-        <div class="container">
-            <section class="hero-text">
-                <p class="hero-title">Outer Wilds Ventures</p>
-                <p class="hero-subtitle">
-                    Bem vindo recruta! Pronto para uma incrível experiência de investigações e descobertas?
-                </p>
-            </section>
+        <div class="hero-private">
+            <div class="container">
+                <section class="hero-text">
+                    <p class="hero-title">Outer Wilds Ventures</p>
+                    <p class="hero-subtitle">
+                        Bem vindo recruta! Pronto para uma incrível experiência de investigações e descobertas?
+                    </p>
+                </section>
+            </div>
         </div>
-    </div>
-    <div>
+        <div>
             <main>
                 <div class="container">
                     <p class="mt-10rem color-white title-5rem">Diário de bordo</p>
@@ -96,7 +100,7 @@
                 </div>
             </main>
         </div>
-        
+
 </body>
 
 </html>
@@ -219,7 +223,7 @@
                         divDescricao.innerHTML = "<span class= 'publicacao-label-titulo'>Descrição: <span class='publicacao-titulo'>" + publicacao.descricao + "</span>"
 
                         spanLugar.innerHTML = "<span class= 'publicacao-label-titulo'>Local: </span> <span class='publicacao-titulo'>" + publicacao.nome + "</span>"
-                        
+
                         divButtons.className = "div-buttons"
                         divPublicacao.className = "publicacao mb-3rem";
                         spanTitulo.id = "inputNumero" + publicacao.idDiario;
@@ -227,7 +231,7 @@
                         spanLugar.className = "publicacao-titulo";
                         divDescricao.className = "publicacao-titulo mt-3rem mb-3rem";
 
-                        spanLugar.id = 'spanLugar'+publicacao.diario;
+                        spanLugar.id = 'spanLugar' + publicacao.diario;
 
                         btnEditar.className = "publicacao-btn-editar"
                         btnEditar.id = "btnEditar" + publicacao.idDiario;
