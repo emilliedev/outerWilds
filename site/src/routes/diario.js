@@ -39,4 +39,8 @@ router.get("/listarRanking/:idUsuario", function (req, res) {
     diarioController.listarRanking(req, res);
 })
 
+router.get("/listarQtdeDiario/:idUsuario", function (req, res) {
+    diarioController.listarQtdeDiario(req, res);
+})
+
 module.exports = router;

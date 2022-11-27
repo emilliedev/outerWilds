@@ -13,7 +13,7 @@
   <title>Outer Wilds | Home</title>
 </head>
 
-<body>
+<body onload="teste()">
   <div class="body">
     <div class="body-container">
       <header class="navbar">
@@ -21,10 +21,16 @@
           <section class="menu-items">
             <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds" class="logo-outer" /></a>
             <section class="menu-links">
-              <a href="#astros"><section>Astros</section></a>
-              <a href="sobre.html"><section>Sobre</section></a>
+              <a href="#astros">
+                <section>Astros</section>
+              </a>
+              <a href="sobre.html">
+                <section>Sobre</section>
+              </a>
               <section>Interação</section>
-              <a href="login.html"><section>Acessar</section></a>
+              <a href="login.html">
+                <section>Acessar</section>
+              </a>
             </section>
           </section>
         </div>
@@ -33,7 +39,7 @@
         <div class="hero">
           <div class="container">
             <section class="hero-text">
-              <p class="hero-title">Boas vindas aventureiro!</p>
+              <p class="hero-title">Boas vindas <span id="spanBemVindo" class="hero-title">aventureiro!</span></p>
               <p class="hero-subtitle">
                 Pronto para uma viagem pela vastidão do universo?
               </p>
@@ -96,8 +102,8 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Recanto lenhoso</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/recanto.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/recanto.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Recanto lenhoso</span>
                   é o planeta natal dos Hearthians, onde é um lugar muito aconchegante que há uma comunidade muito unida
@@ -117,11 +123,15 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Gêmeos da Ampulheta</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/gemeos.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/gemeos.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeos da Ampulheta</span>
-                  é um par de planetas que se orbitam entre si e são dependentes um do outro. Um deles é o <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cálido</span> e o outro é o <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cinzento</span>. Com o passar do tempo, o Gêmeo cinzento transfere a areia para o Gêmeo Cálido, o que faz com que os segredos de um deles vá se escondendo, e do outro, revelando.
+                  é um par de planetas que se orbitam entre si e são dependentes um do outro. Um deles é o <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cálido</span> e o outro é o
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cinzento</span>. Com o
+                  passar do tempo, o Gêmeo cinzento transfere a areia para o Gêmeo Cálido, o que faz com que os segredos
+                  de um deles vá se escondendo, e do outro, revelando.
                   <br>
 
                 <ul class="outer-regular-text color-white regular-text list text-align-center">
@@ -136,11 +146,16 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Vale Incerto</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/vale.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/vale.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Vale Incerto</span>
-                  é um planeta rochoso e oco, e que possui um <span class="outer-regular-text color-orange regular-text weight-bold ">buraco negro</span> dentro de si. Esse planeta possui uma lua vulcânica chamada <span class="outer-regular-text color-orange regular-text weight-bold ">Luzeiro do Vale</span>, que vai destruindo o planeta aos poucos, fazendo com que lugares que escondem grandes segredos sejam inacessíveis se você não chega a tempo.
+                  é um planeta rochoso e oco, e que possui um <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">buraco negro</span> dentro de si.
+                  Esse planeta possui uma lua vulcânica chamada <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">Luzeiro do Vale</span>, que vai
+                  destruindo o planeta aos poucos, fazendo com que lugares que escondem grandes segredos sejam
+                  inacessíveis se você não chega a tempo.
                   <br>
 
                 <ul class="outer-regular-text color-white regular-text list text-align-center">
@@ -155,11 +170,14 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Profundezas do Gigante</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/profundezas.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/profundezas.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Profundezas do Gigante</span>
-                  é um planeta gigante aquático, possuindo pequenas ilhas que estão livremente nas águas do planeta, vários tornados, e uma gravidade fortíssima. Em alguns momentos suas ilhas são consumidas pela água e devolvidas para o lugar de difícil locomoção, onde tem uma entrada para seu núcleo energizado de um peciliar acesso.
+                  é um planeta gigante aquático, possuindo pequenas ilhas que estão livremente nas águas do planeta,
+                  vários tornados, e uma gravidade fortíssima. Em alguns momentos suas ilhas são consumidas pela água e
+                  devolvidas para o lugar de difícil locomoção, onde tem uma entrada para seu núcleo energizado de um
+                  peciliar acesso.
                   <br>
 
                 <ul class="outer-regular-text color-white regular-text list text-align-center">
@@ -174,11 +192,14 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Abrolho Sombrio</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/abrolho.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/abrolho.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Abrolho Sombrio</span>
-                  é um planeta que está infectado por uma grande trepadeira, um dos mistérios do jogo que você descobre ao explorar. Seu interior é imenso e dificultoso para enxergar seu caminho a frente, onde você só consegue ver luzes que pertencem a gigantes Peixes Tamboril que são cegos mas são guiados por qualquer tipo de barulho.
+                  é um planeta que está infectado por uma grande trepadeira, um dos mistérios do jogo que você descobre
+                  ao explorar. Seu interior é imenso e dificultoso para enxergar seu caminho a frente, onde você só
+                  consegue ver luzes que pertencem a gigantes Peixes Tamboril que são cegos mas são guiados por qualquer
+                  tipo de barulho.
                   <br>
 
                 <ul class="outer-regular-text color-white regular-text list text-align-center">
@@ -193,11 +214,12 @@
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Lua Quântica</p>
                 <div class="planetary-container">
-                <img src="assets/images/planets/lua.png" class="planeta-img">
-              </div>
+                  <img src="assets/images/planets/lua.png" class="planeta-img">
+                </div>
                 <p class="outer-regular-text color-white regular-text text-align-center">
                   <span class="outer-regular-text color-orange regular-text weight-bold ">Lua Quântica</span>
-                  é um misterioso astro que se move para outro lugar toda vez que desviam o olhar, assim como todos os artigos quânticos que se comportam da mesma forma e que emitem os mesmos sinais.  
+                  é um misterioso astro que se move para outro lugar toda vez que desviam o olhar, assim como todos os
+                  artigos quânticos que se comportam da mesma forma e que emitem os mesmos sinais.
                   <br>
 
                 <ul class="outer-regular-text color-white regular-text list text-align-center">
@@ -221,3 +243,25 @@
 </body>
 
 </html>
+
+<script>
+  // var global = 1000
+  function teste() {
+    setInterval(intervalo, 20000)
+    // global = 21000
+
+  }
+  function intervalo() {
+    var listaBemVindo = []
+    listaBemVindo.push('extraterreste!', 'astronauta!', 'piloto!', 'capitão!', 'astro!', 'berinjela!', 'bergamota', 'joão', 'vitor', 'aventureiro!')
+    for (var x = 0; x < listaBemVindo.length; x++) {
+  
+      (function (x) {
+        setTimeout(function () {
+          // spanBemVindo.innerHTML = listaBemVindo[x]
+          console.log(listaBemVindo[x])
+        }, x * 2000);
+      }(x));
+    }
+  }
+</script>
