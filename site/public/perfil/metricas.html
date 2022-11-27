@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style/global.style.css">
+    <link rel="stylesheet" href="../style/private.style.css">
+    <link rel="stylesheet" href="../style/register.css">
+    <link rel="stylesheet" href="../style/style.css">
+
+    <script src="../scripts/charCounter.js"></script>
+    <script src="../scripts/funcoes.js"></script>
+    <script src="../scripts/stickyNavbar.js"></script>
+
+    <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
     <title>Métricas</title>
 </head>
 
@@ -15,7 +26,8 @@
 
         </div>
         <div>Lugares mais visitados</div>
-        <div id="campoLugaresMaisVisitados"></div>
+        <div id="campoLugaresMaisVisitados">
+        </div>
         <div>Seu perfil é</div>
         <div id="campoPerfil"></div>
     </div>
@@ -31,35 +43,34 @@
         fetch(`/diario/listarQtdeDiario/${idUsuario}`).then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    var feed = document.getElementById("campoDiariosCadastrados");
+                    var feed2 = document.getElementById("campoDiariosCadastrados");
                     var mensagem = document.createElement("span");
                     mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
+                    feed2.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
 
                 // feed.innerHTML = "";
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    var feed = document.getElementById("divMetricas");
+                    var feed = document.getElementById("campoDiariosCadastrados");
                     // feed.innerHTML = "";
                 
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
 
-                        campoDiariosCadastrados.innerHTML = `<span>${publicacao.qtdeDiario}</span>`
+                        campoDiariosCadastrados.innerHTML = `<b>${publicacao.qtdeDiario}</b>`
 
-                        feed.appendChild(campoDiariosCadastrados)
                     }
 
                     if (publicacao.qtdeDiario <= 5) {
-                        campoPerfil.innerHTML = 'Recruta'
+                        campoPerfil.innerHTML = '<b>Recruta</b>'
                     }else if (publicacao.qtdeDiario <= 15) {
-                        campoPerfil.innerHTML = 'Amador'
+                        campoPerfil.innerHTML = '<b>Amador</b>'
                     }else if (publicacao.qtdeDiario <= 25) {
-                        campoPerfil.innerHTML = 'Curioso'
+                        campoPerfil.innerHTML = '<b>Curioso</b>'
                     }else {
-                        campoPerfil.innerHTML = 'Explorador'
+                        campoPerfil.innerHTML = '<b>Explorador</b>'
                     }
 
                     //finalizarAguardar();
@@ -86,7 +97,7 @@
                 // feed.innerHTML = "";
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
-                    var feed = document.getElementById("divMetricas");
+                    var feed = document.getElementById("campoLugaresMaisVisitados");
                     // feed.innerHTML = "";
                     var lugarRanking = 1;
                     for (let i = 0; i < resposta.length; i++) {
@@ -96,7 +107,7 @@
                         var divLugar = document.createElement("div");
                         var spanNome = document.createElement("span");
 
-                        spanNome.innerHTML = `<span>${lugarRanking}° Lugar </span> <span>${publicacao.nome}</span><br>`
+                        spanNome.innerHTML = `<b>${lugarRanking}° Lugar </b> <span>${publicacao.nome}</span><br>`
                         lugarRanking++
 
                         divLugar.appendChild(spanNome)
