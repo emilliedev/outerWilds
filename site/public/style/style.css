@@ -1,5 +1,4 @@
 /* MAIN BODY CONFIG */
-
     .body {
         position: relative;
         margin:0;
@@ -204,16 +203,35 @@
 
     /* SUPERNOVA  */
 
-    .supernova {
-        width: 100vw;
+    /* .supernova {
+        width: 100%;
         height: 2000px;
         background: radial-gradient(50% 50% at 50% 50%, #B0EFFF 0%, rgba(0, 204, 255, 0) 100%);
-        position: absolute;
-        bottom: 0;
-        right: 0;
+    } */
+
+    .supernova {
+        width: 100vw;
     }
 
 /*  */
+
+.img-nomai-mask {
+    background-image: url(../assets/images/mask-1.svg);
+    width: 900px;
+    height: 900px;
+    transition: .5s;
+    background-size: contain;
+}
+
+.img-nomai-mask:hover {
+    background-image: url(../assets/images/mask.svg);
+}
+
+.img-nomai-mask-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 
 /*  */
 
