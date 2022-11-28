@@ -119,7 +119,6 @@
             lugar: lugar,
             titulo: postForm.iptTitulo.value,
             descricao: postForm.txtDescription.value,
-            nota: nota,
             idUsuario: idUsuario
         }
 
@@ -142,7 +141,6 @@
                 sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
                 sessionStorage.TITULO_DIARIO = json.tituloDiario;
                 sessionStorage.ID_DIARIO = json.idDiario;
-                sessionStorage.AVALIACAO = json.nota;
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
