@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="sweetalert2.min.css">
 
     <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
-    <title>Métricas</title>
+    <title>Métricas | Outer Wilds Shack</title>
 </head>
 
 <body onload="listarRanking(), listarQtdeDiario(), grafico()" class="body">
@@ -109,6 +109,16 @@
 </html>
 
 <script>
+function alertaSucesso() {
+                        Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Avaliação enviada, obrigada!',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    }
+
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
     var lugar = sessionStorage.getItem('FK_LUGAR');
     var nota = sessionStorage.getItem('AVALIACAO');
@@ -129,7 +139,12 @@
                 }).then(function (resposta){
                     if(resposta.ok){
                         mudarSession()
+                        alertaSucesso()
                     console.log("Avaliação feita com sucesso!")
+                    setTimeout(() => {
+                        window.location = 'metricas.html'
+                    },"2000")
+                    
                     } else {
                     console.log("Erro no then!")
                     }

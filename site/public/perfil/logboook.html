@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="../style/private.style.css">
 
     <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
-    <title>Diário de Bordo | Outer Wilds</title>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Diário de Bordo | Outer Wilds Shack</title>
 </head>
 
 <body onload="atualizarFeed()" class="body">
@@ -32,7 +37,6 @@
                     <a href="metricas.html" class="scale-1-03">
                         <section>Métricas</section>
                     </a>
-                    <section class="scale-1-03">Votação</section>
                     <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
                 </section>
             </section>
@@ -107,6 +111,15 @@
 
 <script>
 
+function alertSucesso() {
+                        Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Diário publicado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    }
 
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
     var lugar = sessionStorage.getItem('FK_LUGAR');
@@ -133,8 +146,12 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso com usuário de ID: " + idUsuario + "!");
+                // window.alert("Post realizado com sucesso com usuário de ID: " + idUsuario + "!");
+
+                alertSucesso()
+                setTimeout(() => {
                 window.location = "logboook.html";
+                }, "2000")
                 // limparFormulario();
                 //finalizarAguardar();
                 sessionStorage.FK_LUGAR = json.fkLugar;
@@ -158,10 +175,18 @@
     function editar(idDiario) {
         sessionStorage.ID_POSTAGEM_EDITANDO = idDiario;
         console.log("cliquei em editar - " + idDiario);
-        window.alert("Você será redirecionado à página de edição do diário de id número: " + idDiario);
+        // window.alert("Você será redirecionado à página de edição do diário de id número: " + idDiario);
         window.location = "../edicaoDiario2.html"
     }
-
+    function alertSucessoDeletado() {
+                        Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro deletado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    }
     function deletar(idDiario) {
         console.log("Criar função de apagar post escolhido - ID" + idDiario);
         fetch(`/diario/deletar/${idDiario}`, {
@@ -172,8 +197,10 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Registro deletado com sucesso");
-                window.location = "logboook.html"
+                alertSucessoDeletado()
+                setTimeout(() => {
+                window.location = "logboook.html";
+                }, "2000")
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
