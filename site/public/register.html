@@ -47,15 +47,14 @@
                     <div><input class="ipt-form" type="password" id="iptSenha" onkeyup="requisitosSenha()"
                             onfocus="mostrarRequisitos()" maxlength="45"></div>
                     <div id="requisitos" style="display: none;">
-                        <div id="oitoCar">Deve conter no mínimo 8 caracteres</div>
-                        <div>Deve conter caracteres especiais</div>
+                        <p id="oitoCar">Deve conter no mínimo 8 caracteres</p>
                     </div>
                     <div class="outer-regular-text mt-1rem">Confirmar senha</div>
                     <div><input class="ipt-form" type="password" id="iptConfirmarSenha" maxlength="45"></div>
                     <div id="avisoSenha"></div>
                 </div>
                 <div class="mt-1-5rem">
-                    <button onclick="validarSenha()" class="button-register">Cadastrar</button>
+                    <button onclick="validarSenha()" class="button-register" id="buttonRegister">Cadastrar</button>
                 </div>
                 <br><br><br>
                 <div>

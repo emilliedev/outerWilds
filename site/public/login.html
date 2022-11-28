@@ -8,8 +8,14 @@
     <link rel="stylesheet" href="style/global.style.css">
     <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/style.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
     <title>Login | Outer Wilds Shack</title>
     <link rel="shortcut icon" href="assets/favicon/recanto-favicon.png" type="image/x-icon">
+
 </head>
 
 <body class="body">
@@ -60,8 +66,7 @@
         var senhaVar = iptSenha.value;
 
         if (apelidoVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert('Preencha todos os campos!')
             // finalizarAguardar();
             return false;
         }
@@ -99,7 +104,7 @@
                 });
 
             } else {
-
+                alert('Erro ao fazer login! Usuário não encontrado na base de dados.')
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
