@@ -85,32 +85,16 @@
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-                        <!-- <script>
-                            const ctx = document.getElementById('myChart');
-
-                            new Chart(ctx, {
-                                type: 'doughnut',
-                                data: {
-                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                                    datasets: [{
-                                        label: '# of Votes',
-                                        data: [12, 19, 3, 5, 2, 3],
-                                        borderWidth: 1
-                                    }]
-                                },
-                                options: {
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    }
-                                }
-                            });
-                        </script> -->
-
-                        
                     </div>
+                </div>
+                <div>
+                    <div>Avalie o site!</div>
+                    <select id="slcAvaliacao">
+                        <option value="triste">Não gostei</option>
+                        <option value="gostei">Gostei</option>
+                        <option value="amei">Amei</option>
+                    </select>
+                    <button onclick="avaliar()">Avaliar</button>
                 </div>
             </div>
     </div>
@@ -122,6 +106,39 @@
 <script>
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
     var lugar = sessionStorage.getItem('FK_LUGAR');
+    var nota = sessionStorage.getItem('AVALIACAO');
+
+    function avaliar() {
+        var nota = slcAvaliacao.value;
+        console.log(sessionStorage.getItem("AVALIACAO"))
+            if(sessionStorage.getItem("AVALIACAO") == 'undefined'){
+                fetch(`/usuarios/avaliar/${idUsuario}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    idUsuario: idUsuario,
+                    nota: nota
+                })
+                }).then(function (resposta){
+                    if(resposta.ok){
+                        mudarSession()
+                    console.log("Avaliação feita com sucesso!")
+                    } else {
+                    console.log("Erro no then!")
+                    }
+                }).catch(function (resposta){
+                    console.log(`#ERRO: ${resposta}`);
+                })
+            } else {
+                alert("Você já realizou uma avaliação, e você só pode avaliar uma vez")
+            }
+    }
+
+    function mudarSession() {
+        sessionStorage.AVALIACAO = idUsuario
+    }
 
     function listarQtdeDiario() {
         fetch(`/diario/listarQtdeDiario/${idUsuario}`).then(function (resposta) {
@@ -209,8 +226,8 @@
 
     function grafico(b) {
         var b = sessionStorage.getItem('ID_USUARIO');
-        console.log('O ID USER É '+b)
-        
+        console.log('O ID USER É ' + b)
+
         // alterarTitulo(idUsuario)
 
         // if (proximaAtualizacao != undefined) {
@@ -232,12 +249,12 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-    
+
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, b) {
-        
+
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -250,7 +267,7 @@
                 label: 'Umidade',
                 data: [],
                 fill: false,
-                backgroundColor: ['#6A4D75','#174E7D','#676E4C','#FF7D25','#d6a200','#00CAFF'],
+                backgroundColor: ['#6A4D75', '#174E7D', '#676E4C', '#FF7D25', '#d6a200', '#00CAFF'],
                 tension: 0.1
             }]
 
