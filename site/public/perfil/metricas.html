@@ -87,6 +87,15 @@
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     </div>
                 </div>
+                <div>
+                    <div>Avalie o site!</div>
+                    <select id="slcAvaliacao">
+                        <option value="triste">Não gostei</option>
+                        <option value="gostei">Gostei</option>
+                        <option value="amei">Amei</option>
+                    </select>
+                    <button onclick="avaliar()">Avaliar</button>
+                </div>
             </div>
     </div>
     </main>
@@ -97,6 +106,39 @@
 <script>
     var idUsuario = sessionStorage.getItem('ID_USUARIO');
     var lugar = sessionStorage.getItem('FK_LUGAR');
+    var nota = sessionStorage.getItem('AVALIACAO');
+
+    function avaliar() {
+        var nota = slcAvaliacao.value;
+        console.log(sessionStorage.getItem("AVALIACAO"))
+            if(sessionStorage.getItem("AVALIACAO") == 'undefined'){
+                fetch(`/usuarios/avaliar/${idUsuario}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    idUsuario: idUsuario,
+                    nota: nota
+                })
+                }).then(function (resposta){
+                    if(resposta.ok){
+                        mudarSession()
+                    console.log("Avaliação feita com sucesso!")
+                    } else {
+                    console.log("Erro no then!")
+                    }
+                }).catch(function (resposta){
+                    console.log(`#ERRO: ${resposta}`);
+                })
+            } else {
+                alert("Você já realizou uma avaliação, e você só pode avaliar uma vez")
+            }
+    }
+
+    function mudarSession() {
+        sessionStorage.AVALIACAO = idUsuario
+    }
 
     function listarQtdeDiario() {
         fetch(`/diario/listarQtdeDiario/${idUsuario}`).then(function (resposta) {
@@ -201,7 +243,7 @@
     }
     
     function plotarGrafico(resposta, b) {
-        
+
         console.log('iniciando plotagem do gráfico...');
         let labels = [];
         let dados = {
