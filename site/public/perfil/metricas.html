@@ -64,7 +64,7 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <div class="hero-title outer-black-text color-white">Seu perfil é</div>
-                            <div id="campoPerfil" class="color-purple"></div>
+                            <div id="campoPerfil"></div>
                         </div>
                         <img src="../assets/gifs/fire-pit.gif" width="400px">
                     </div>
@@ -165,13 +165,13 @@
                     }
 
                     if (publicacao.qtdeDiario <= 5) {
-                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Recruta</b><div class="hero-subtitle outer-regular-text">Está precisando explorar mais, ein!</div>'
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title color-purple">Recruta</b><div class="hero-subtitle outer-regular-text color-purple">Está precisando explorar mais, ein!</div>'
                     } else if (publicacao.qtdeDiario <= 15) {
-                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Amador</b><div class="hero-subtitle outer-regular-text">Está melhorando... Você pode mais!</div>'
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title color-orange">Amador</b><div class="hero-subtitle outer-regular-text color-orange">Está melhorando... Você pode mais!</div>'
                     } else if (publicacao.qtdeDiario <= 25) {
-                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Curioso</b><div class="hero-subtitle outer-regular-text">Está ficando experiente, um aventureiro!</div>'
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title color-green">Curioso</b><div class="hero-subtitle outer-regular-text color-green">Está ficando experiente, um aventureiro nato!</div>'
                     } else {
-                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title">Explorador</b><div class="hero-subtitle outer-regular-text">Você é um explorador nato! O universo em breve ficará pequeno para você</div>'
+                        campoPerfil.innerHTML = '<b class="outer-regular-text hero-title color-blue">Explorador</b><div class="hero-subtitle outer-regular-text color-blue">Você é um explorador nato! O universo em breve ficará pequeno para você.</div>'
                     }
 
                 });
@@ -194,7 +194,7 @@
                     throw "Nenhum resultado encontrado!!";
                 }
 
-                // feed.innerHTML = "";
+
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
                     var feed = document.getElementById("campoLugaresMaisVisitados");
@@ -202,7 +202,7 @@
                     var lugarRanking = 1;
                     for (let i = 0; i < resposta.length; i++) {
                         var publicacao = resposta[i];
-                        // alert(publicacao.qtdeLugar)
+
 
                         var divLugar = document.createElement("div");
                         var spanNome = document.createElement("span");
@@ -213,8 +213,6 @@
                         divLugar.appendChild(spanNome)
                         feed.appendChild(divLugar)
                     }
-
-                    //finalizarAguardar();
                 });
             } else {
                 throw ('Houve um erro na API!');
@@ -226,13 +224,7 @@
 
     function grafico(b) {
         var b = sessionStorage.getItem('ID_USUARIO');
-        console.log('O ID USER É ' + b)
-
-        // alterarTitulo(idUsuario)
-
-        // if (proximaAtualizacao != undefined) {
-        //     clearTimeout(proximaAtualizacao);
-        // }
+        console.log('O ID USER É '+b)
 
         fetch(`/diario/grafico/${b}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -249,36 +241,20 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    
     function plotarGrafico(resposta, b) {
 
         console.log('iniciando plotagem do gráfico...');
-
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
-
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
             datasets: [{
                 label: 'Umidade',
                 data: [],
                 fill: false,
-                backgroundColor: ['#6A4D75', '#174E7D', '#676E4C', '#FF7D25', '#d6a200', '#00CAFF'],
+                backgroundColor: ['#6A4D75','#174E7D','#676E4C','#FF7D25','#d6a200','#00CAFF','#83366a','#8a2434','#a26511;','#6f8c97'],
                 tension: 0.1
             }]
-
-
-            // {
-            //     label: 'Temperatura',
-            //     data: [],
-            //     fill: false,
-            //     borderColor: 'rgb(199, 52, 52)',
-            //     tension: 0.1
-            // }]
         };
 
         console.log('----------------------------------------------')
@@ -306,7 +282,7 @@
 
         // Criando estrutura para plotar gráfico - config
         const config = {
-            type: 'doughnut',
+            type: 'bar',
             data: dados,
         };
 
