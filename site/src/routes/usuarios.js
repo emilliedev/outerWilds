@@ -20,4 +20,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/avaliar/:idUsuario", function(req, res){
+    usuarioController.avaliar(req, res);
+});
+
 module.exports = router;

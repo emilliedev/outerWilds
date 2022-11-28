@@ -31,8 +31,23 @@ function cadastrar(apelido, senha, planetaNatal) {
     return database.executar(instrucao);
 }
 
+function avaliar(nota, idUsuario){
+    var instrucao = `INSERT INTO Avaliacao(nota, fkUsuario) values ('${nota}', ${idUsuario});
+   ` 
+    return database.executar(instrucao)
+}
+
+// /* Atualiza a fk do comentário */
+// function atualizarDados(idUsuario){
+//     var instrucao = `
+//     UPDATE usuario SET fkComentario = ${idUsuario} WHERE idUsuario = ${idUsuario};
+//    ` 
+//    return database.executar(instrucao)
+// }
+
 module.exports = {
     entrar,
+    avaliar,
     cadastrar,
     listar,
 };
