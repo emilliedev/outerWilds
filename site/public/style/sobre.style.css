@@ -1,10 +1,26 @@
 .body {
     background-image: url(../assets/background/space.png);
     position: relative;
+    padding-bottom: 200px;
 }
 
 .img-astronauta {
     width: 605px;
+    animation: float 5s ease infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0);
+    }
+
+    50% {
+        transform: translateY(-3rem);
+    }
+
+    100% {
+        transform: translate(0);
+    }
 }
 
 .hero-sobre {
