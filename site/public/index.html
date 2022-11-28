@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="style/global.style.css" />
   <link rel="stylesheet" href="style/style.css" />
   <link rel="shortcut icon" href="assets/favicon/recanto-favicon.png" type="image/x-icon" />
+
   <script src="scripts/stickyNavbar.js"></script>
+  <script src="scripts/validation.js"></script>
   <title>Outer Wilds | Home</title>
 </head>
 
@@ -27,7 +29,6 @@
               <a href="sobre.html">
                 <section>Sobre</section>
               </a>
-              <section>Interação</section>
               <a href="login.html">
                 <section>Acessar</section>
               </a>
@@ -247,20 +248,19 @@
 <script>
   // var global = 1000
   function teste() {
-    setInterval(intervalo, 20000)
+    setInterval(intervalo, 20500)
     // global = 21000
 
   }
   function intervalo() {
     var listaBemVindo = []
-    listaBemVindo.push('extraterreste!', 'astronauta!', 'piloto!', 'capitão!', 'astro!', 'berinjela!', 'bergamota', 'joão', 'vitor', 'aventureiro!')
+    listaBemVindo.push('extraterreste!', 'astronauta!', 'piloto!', 'capitão!', 'observador!', 'viajante!', 'explorador!', 'Lareiro!', 'navegador!', 'aventureiro!')
     for (var x = 0; x < listaBemVindo.length; x++) {
   
       (function (x) {
         setTimeout(function () {
-          // spanBemVindo.innerHTML = listaBemVindo[x]
-          console.log(listaBemVindo[x])
-        }, x * 2000);
+          spanBemVindo.innerHTML = listaBemVindo[x]
+        }, x * 2050);
       }(x));
     }
   }

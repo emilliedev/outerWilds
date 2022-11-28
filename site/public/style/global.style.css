@@ -24,6 +24,9 @@ html {
     --yellow: #d6a200;
     --outer-cian: #00CAFF;
     --white: #DAF7FF;
+    --pink: #83366a;
+    --red: #8a2434;
+    --gray: #6f8c97;
 }
 
 .bg-purple {
@@ -98,6 +101,14 @@ html {
 
     .color-purple {
         color: var(--outer-purple);
+    }
+
+    .color-blue {
+        color: var(--outer-blue);
+    }
+
+    .color-green {
+        color: var(--outer-green);
     }
 
     .text-align-center {

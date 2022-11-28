@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style/register.css">
     <link rel="stylesheet" href="style/global.style.css">
     <link rel="stylesheet" href="style/style.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <script src="scripts/validation.js"></script>
     <title>Cadastro | Outer Wilds</title>
 </head>
 
@@ -18,7 +25,9 @@
                 <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds"
                         class="logo-outer" /></a>
                 <section class="menu-links">
-                    <a href="index.html"><section>Home</section></a>
+                    <a href="index.html">
+                        <section>Home</section>
+                    </a>
                     <a href="login.html">
                         <section>Entrar</section>
                     </a>
@@ -32,18 +41,21 @@
                 <span class="register-title color-white">Cadastre-se</span>
                 <div class="campos color-white">
                     <div class="outer-regular-text mt-1rem">Apelido</div>
-                    <div><input class="ipt-form" type="text" id="iptApelido"></div>
-                    <div class="outer-regular-text mt-1rem">Senha</div>
-                    <div><input class="ipt-form" type="password" id="iptSenha"></div>
-                    <div class="outer-regular-text mt-1rem">Confirmar senha</div>
-                    <div><input class="ipt-form" type="password" id="iptConfirmarSenha"></div>
-                    <div>
-                        <div class="outer-regular-text mt-1rem">Qual é o seu planeta favorito?</div>
-                        <div><input class="ipt-form" type="text" id="slcLugar"></div>
+                    <div><input class="ipt-form" type="text" id="iptApelido" onkeyup="validarApelido()" maxlength="20">
                     </div>
+                    <div class="outer-regular-text mt-1rem">Senha</div>
+                    <div><input class="ipt-form" type="password" id="iptSenha" onkeyup="requisitosSenha()"
+                            onfocus="mostrarRequisitos()" maxlength="45"></div>
+                    <div id="requisitos" style="display: none;">
+                        <div id="oitoCar">Deve conter no mínimo 8 caracteres</div>
+                        <div>Deve conter caracteres especiais</div>
+                    </div>
+                    <div class="outer-regular-text mt-1rem">Confirmar senha</div>
+                    <div><input class="ipt-form" type="password" id="iptConfirmarSenha" maxlength="45"></div>
+                    <div id="avisoSenha"></div>
                 </div>
                 <div class="mt-1-5rem">
-                    <button onclick="cadastrar()" class="button-register">Cadastrar</button>
+                    <button onclick="validarSenha()" class="button-register">Cadastrar</button>
                 </div>
                 <br><br><br>
                 <div>
@@ -65,8 +77,7 @@
         var apelidoVar = iptApelido.value;
         var senhaVar = iptSenha.value;
         var confirmacaoSenhaVar = iptConfirmarSenha.value;
-        var lugarVar = slcLugar.value;
-        console.log(apelidoVar, senhaVar, lugarVar, confirmacaoSenhaVar)
+        console.log(apelidoVar, senhaVar, confirmacaoSenhaVar)
 
         // if (apelidoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
         //     cardErro.style.display = "block"
@@ -87,7 +98,6 @@
                 // Agora vá para o arquivo routes/usuario.js
                 apelidoServer: apelidoVar,
                 senhaServer: senhaVar,
-                lugarServer: lugarVar
             })
         }).then(function (resposta) {
 
