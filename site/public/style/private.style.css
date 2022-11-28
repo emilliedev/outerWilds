@@ -228,5 +228,21 @@ main {
 }
 
 .grafico {
-    width: 50%;
+    width: 60%;
+}
+
+.button {
+    padding: 20px 80px;
+    width: 541px;
+    border-radius: 10px;
+    background-color: var(--outer-purple);
+    color: white;
+    font-weight: bold;
+}
+
+#slcAvaliacao {
+    width: 541px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
 }

@@ -15,6 +15,11 @@
     <script src="../scripts/funcoes.js"></script>
     <script src="../scripts/stickyNavbar.js"></script>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+
     <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
     <title>Métricas</title>
 </head>
@@ -32,7 +37,6 @@
                     <a href="metricas.html" class="scale-1-03">
                         <section>Métricas</section>
                     </a>
-                    <section class="scale-1-03">Votação</section>
                     <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
                 </section>
             </section>
@@ -74,27 +78,28 @@
                         </div>
                     </div>
                     <div class="ranking-container mt-5rem">
-                        <div class="ranking bg-yellow">
+                        <div class="ranking bg-deep-orange">
                             <div><span class="outer-black-text">Ranking de lugares mais visitados</span><br><br>
                                 <div id="campoLugaresMaisVisitados">
                                 </div>
                             </div>
                         </div>
                         <div class="grafico">
+                            <div class="hero-title outer-black-text color-white" style="text-align: center;">Gráfico de quantidade de visitas</div>
                             <canvas id="myChart"></canvas>
                         </div>
 
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                     </div>
                 </div>
-                <div>
-                    <div>Avalie o site!</div>
-                    <select id="slcAvaliacao">
-                        <option value="triste">Não gostei</option>
-                        <option value="gostei">Gostei</option>
-                        <option value="amei">Amei</option>
+                <div class="mt-5rem" style="display: flex; flex-direction: column; width: 100%; justify-content: center; align-items: center; border-top: 2px solid rgb(106, 67, 0); padding-top: 100px;">
+                    <div class="outer-regular-text hero-subtitle outer-regular-text color-white">Gostou do site? Deixei sua avaliação!</div>
+                    <select id="slcAvaliacao" class="select minor-text outer-regular-text">
+                        <option value="amei" style="color: black;">Amei</option>
+                        <option value="gostei" style="color: black;">Gostei</option>
+                        <option value="triste" style="color: black;">Não gostei</option>
                     </select>
-                    <button onclick="avaliar()">Avaliar</button>
+                    <button onclick="avaliar()" class="button minor-text outer-regular-text">Avaliar</button>
                 </div>
             </div>
     </div>
@@ -132,7 +137,12 @@
                     console.log(`#ERRO: ${resposta}`);
                 })
             } else {
-                alert("Você já realizou uma avaliação, e você só pode avaliar uma vez")
+                Swal.fire({
+                    title: 'Epa!',
+                    text: 'Apenas uma avaliação por usuário!',
+                    icon: 'error',
+                    confirmButtonText: 'Beleza'
+                    })
             }
     }
 
@@ -249,7 +259,7 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                label: [],
                 data: [],
                 fill: false,
                 backgroundColor: ['#6A4D75','#174E7D','#676E4C','#FF7D25','#d6a200','#00CAFF','#83366a','#8a2434','#a26511;','#6f8c97'],
