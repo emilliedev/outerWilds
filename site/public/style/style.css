@@ -233,6 +233,18 @@
     justify-content: center;
 }
 
+.olho {
+    background-image: url(../assets/images/olho-none.svg);
+    background-size: contain;
+    width: 339px;
+    height: 265px;
+    transition: .3s;
+}
+
+.olho:hover {
+    background-image: url(../assets/images/olho-block.svg);
+}
+
 /*  */
 
 

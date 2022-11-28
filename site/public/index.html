@@ -12,6 +12,13 @@
 
   <script src="scripts/stickyNavbar.js"></script>
   <script src="scripts/validation.js"></script>
+  <script src="scripts/mini-game.js"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
   <title>Outer Wilds | Home</title>
 </head>
 
@@ -47,9 +54,12 @@
             </section>
           </div>
         </div>
+
+        <div class="olho" id="olho1" onclick="contarPontoUm()"></div>
+
         <div class="container">
           <div class="about-container">
-            <p class="title-5rem mt-20rem">
+            <p class="title-5rem mt-10rem">
               Sobre <span class="orange-title">Outer Wilds</span>
             </p>
             <div class="about-content">
@@ -121,6 +131,10 @@
               </div>
             </div>
             <div class="gemeos-ampulheta">
+              <div style="width: 100%; display: flex; justify-content: end;">
+              <div class="olho" id="olho2" onclick="contarPontoDois()"></div>
+            </div>
+
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Gêmeos da Ampulheta</p>
                 <div class="planetary-container">
@@ -190,6 +204,7 @@
               </div>
             </div>
             <div class="abrolho-sombrio">
+              <div class="olho" id="olho3" onclick="contarPontoTres()"></div>
               <div class="container">
                 <p class="mt-10rem color-orange title-5rem">Abrolho Sombrio</p>
                 <div class="planetary-container">
@@ -233,11 +248,11 @@
             </div>
             <!-- <section class="supernova"></section> -->
             <section class="supernova">
-              <p class="color-white title-5rem mb-5rem mt-10rem">Mas nada disso importa, pois tudo acaba com...</p>
+              <p class="color-white title-5rem mb-5rem mt-20rem">Mas nada disso importa, pois tudo acaba com...</p>
               <img src="assets/gifs/Supernova.webp" class="supernova">
             </section>
             <section>
-              <p class="mt-10rem color-white title-5rem">Ou melhor, esse fim tem seu recomeço!</p>
+              <p class="mt-10rem color-white title-5rem mb-5rem">Ou melhor, esse fim tem seu recomeço!</p>
               <div class="img-nomai-mask-container">
                 <a href="#astros">
                 <section>
