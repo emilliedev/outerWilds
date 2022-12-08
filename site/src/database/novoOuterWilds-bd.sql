@@ -2,8 +2,6 @@ CREATE DATABASE OuterWilds;
 
 USE OuterWilds;
 
-DROP DATABASE OuterWilds;
-
 -- ------------------------------------------ --
 
 CREATE TABLE Lugar (
@@ -35,8 +33,6 @@ CREATE TABLE Avaliacao (
     ,FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario)
 );
 
-SELECT * FROM Avaliacao;
-
 -- ------------------------------------------ --
     
 INSERT INTO Lugar (nome) VALUES
@@ -52,8 +48,8 @@ INSERT INTO Lugar (nome) VALUES
     ,('Luzeiro do Vale');
     
 INSERT INTO Diario (titulo, descricao, fkLugar, fkUsuario) VALUES
-	 ('A procura de Riebek','Achei o Riebek dentro da boca de um tamboril gigante! Ele está bem e me deu infos que...',5,1)
-    ,('Mistério do Cometa Xereta','Após o cometa ficar perto suficiente do sol, o gelo começa a derreter...',9,1);	
+	 ('O mistério do Recanto Lenhoso','Dentro do planeta há uma ENORME caverna que esconde segredos sobre o passado...',1,1)
+    ,('Peixe do Abrolho Sombrio','Muito assustador',1,1);	
 
 
 
