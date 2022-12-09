@@ -55,9 +55,9 @@ https://user-images.githubusercontent.com/110927737/206602830-c26db567-7c97-4fbc
 <h1 align=center>🌌Obrigada por dar uma passadinha aqui!🌌</h1>
 
 
-<div display=flex>
+<div align=center>
   <h3> 👋🏽 Contato </h3>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/linkedin/linkedin-original.svg" width=70px>
+  <a href="https://www.linkedin.com/in/helena-mirandas/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
 </div>
 <a href="https://www.linkedin.com/in/emiole/"><img src="https://user-images.githubusercontent.com/110927737/206580555-3687f206-4696-47e3-bda0-d6e9eecff0aa.gif" ></a>
 
