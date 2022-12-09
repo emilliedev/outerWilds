@@ -13,7 +13,7 @@
 
    <br>
    
-  [Principais requisitos técnicos utilizados](#-principais-requisitos-técnicos-utilizados) <br>
+  [Principais requisitos técnicos utilizados](#-Principais-requisitos-técnicos-utilizados) <br>
   [Requisitos técnicos](#-principais-requisitos-técnicos-utilizados) <br>
   [Funcionalidades](#-Funcionalidades-aplicadas) <br>
   [Conclusão](#-Conclusão) <br>
