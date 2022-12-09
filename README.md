@@ -13,7 +13,7 @@
 
    <br>
    
-  [Principais requisitos técnicos utilizados](#-Principais-requisitos-técnicos-utilizados) <br>
+  [Principais requisitos técnicos utilizados](#Principais-requisitos-técnicos-utilizados) <br>
   [Requisitos técnicos](#-principais-requisitos-técnicos-utilizados) <br>
   [Funcionalidades](#-Funcionalidades-aplicadas) <br>
   [Conclusão](#-Conclusão) <br>
@@ -31,7 +31,7 @@ https://user-images.githubusercontent.com/110927737/206602830-c26db567-7c97-4fbc
 > Caso queira ver a tour sem pressa, acesse o vídeo no link https://www.youtube.com/watch?v=oScyUd8dOh8&ab_channel=EmillieDuarte ou clone o repositório em sua máquina - caso precise de ajuda para a clonagem do repô, segue o tutorial abaixo! 
 <br>
 
-# Principais requisitos técnicos utilizados
+#Principais requisitos técnicos utilizados
 
 - [x] Vetores
 - [x] Laço de repetição
