@@ -12,9 +12,9 @@
 
    <br>
 
-  [Requisitos técnicos](-Principais-requisitos-técnicos-utilizados) <br>
-  [Funcionalidades](-Funcionalidades-aplicadas) <br>
-  [Conclusão](-Conclusão) <br>
+  [Requisitos técnicos](#-Principais-requisitos-técnicos-utilizados) <br>
+  [Funcionalidades](#-Funcionalidades-aplicadas) <br>
+  [Conclusão](#-Conclusão) <br>
 
 
 </details>
