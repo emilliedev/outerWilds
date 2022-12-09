@@ -59,3 +59,5 @@ https://user-images.githubusercontent.com/110927737/206602830-c26db567-7c97-4fbc
   <h3> 👋🏽 Contato </h3>
   <a href="https://www.linkedin.com/in/emiole"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
 </div>
+
+<img src="https://giffiles.alphacoders.com/212/212693.gif">
