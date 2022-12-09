@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/global.style.css">
+    <link rel="stylesheet" href="style/register.css">
+    <link rel="stylesheet" href="style/style.css">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <title>Login | Outer Wilds Shack</title>
+    <link rel="shortcut icon" href="assets/favicon/recanto-favicon.png" type="image/x-icon">
+
+</head>
+
+<body class="body">
+    <header class="navbar">
+        <div class="container">
+            <section class="menu-items">
+                <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds"
+                        class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="index.html"><section>Home</section></a>
+                    <a href="register.html"><section>Cadastrar-se</section></a>
+                </section>
+            </section>
+        </div>
+    </header>
+    <div class="body-container-register">
+        <main>
+            <div class="form-box">
+                <span class="register-title color-white">Entrar</span>
+                <div class="campos color-white">
+                    <div class="outer-regular-text mt-1rem">Apelido</div>
+                    <div><input class="ipt-form" type="text" id="iptApelido"></div>
+                    <div class="outer-regular-text mt-1rem">Senha</div>
+                    <div><input class="ipt-form" type="password" id="iptSenha"></div>
+                    <div>
+                    </div>
+                    <div class="mt-1-5rem">
+                        <button class="button-register" onclick="entrar()">Entrar</button>
+                    </div>
+                    <br><br>
+                <div>
+                    <a href="register.html" class="outer-regular-text register-link">Ainda não tem conta? Cadastre-se já!</a>
+                </div>
+                </div>
+            </div>
+        </main>
+</body>
+
+</html>
+
+<script>
+
+
+    function entrar() {
+        // aguardar();
+
+        var apelidoVar = iptApelido.value;
+        var senhaVar = iptSenha.value;
+
+        if (apelidoVar == "" || senhaVar == "") {
+            alert('Preencha todos os campos!')
+            // finalizarAguardar();
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", apelidoVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                apelidoServer: apelidoVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.APELIDO_USUARIO = json.apelido;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.AVALIACAO = json.nota;
+
+                    setTimeout(function () {
+                        window.location = "perfil/logboook.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                alert('Erro ao fazer login! Usuário não encontrado na base de dados.')
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

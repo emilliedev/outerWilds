@@ -1,0 +1,251 @@
+/* MAIN BODY CONFIG */
+    .body {
+        position: relative;
+        margin:0;
+
+        top:0;
+        left:0;
+    }
+
+    .body-container {
+        width: 100%;
+        height: 1500vh;
+        background-image: url(../assets/background/stars.png), linear-gradient( rgb(0,0,0) 0%, rgb(0,0,0) 100%);
+        /* background-image: url(../assets/background/stars.png), linear-gradient(rgb(6, 2, 44) 0%, rgb(0,0,0) 17%, rgb(0, 255, 255) 30%,  rgb(51, 40, 133) 100%); */
+        background-repeat: repeat;
+    }
+
+/*  */
+    
+/* CONTAINER DIV GLOBAL */
+
+    .container {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+/*  */
+
+/* NAVBAR  */
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        width: 100%;
+        align-items: center;
+        position: absolute;
+    }
+
+    .menu-items {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #ececec;
+    }
+
+    .menu-links {
+        display: flex;
+        width: 30%; 
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-links section {
+        font-family: 'Outer Regular', sans-serif;
+    }
+
+    .sticky {
+        -webkit-transition: 0.3s;
+        transition: 1s;
+        z-index: 2; 
+        width: 100%;
+        position: fixed;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        backdrop-filter: blur( 8px );
+        background-color: rgba(0, 0, 0, 0.346);
+        -webkit-backdrop-filter: blur( 8px );
+    }
+
+/*  */
+
+/* SCROLLBAR  */
+
+    ::-webkit-scrollbar {
+        background-color: rgb(13, 55, 92);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgb(0,149,159);
+        background: linear-gradient( rgba(0,149,159,1) 37%, rgba(11,30,38,0) 100%);
+        border-radius: 0.3125rem;
+    }
+
+/*  */
+
+/* IMAGES  */
+
+    .logo-outer {
+        width: 190px;
+    }
+
+/*  */
+
+/* MAIN  */
+
+    /* HERO */
+
+        .hero {
+            background-image: url(../assets/background/wallpaper.png);
+            padding: 500px 0;
+            width: 100vw;
+            background-size: cover;
+        }
+
+        .hero-text p {
+            color: white;
+            font-family: 'Outer', sans-serif;
+        }
+
+        .hero-title {
+            font-size: 6rem;
+        }
+
+        .hero-title span {
+            color: white;
+            font-family: 'Outer', sans-serif;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+        }
+
+    /*  */
+
+    /* SOBRE  */
+
+        .about-container {
+            color: white;
+        }
+
+        .about-container p {
+            font-family: 'Outer', sans-serif;
+        }
+
+        .orange-title {
+            color: #F97B1F; 
+            font-family: 'Outer', sans-serif;
+        }
+
+        .about-content section p {
+            font-family: 'Outer Regular', sans-serif;
+            font-size: 2rem;
+            margin-top: 2.5rem;
+            text-align: center;
+        }
+
+        .planetary-container {
+            display: flex;
+            justify-content: center;
+        }
+
+    /*  */
+
+        /* HEARTHIANS - OUTER WILDS VENTURES  */
+
+            .hearthians-content {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .about-hearthians {
+                margin-left: 3rem;
+            }
+
+        /*  */
+
+    /* HISTÓRIA  */
+
+    .space-background {
+        width: 100%;
+        background-image: url(../assets/background/space.png);
+        background-repeat: repeat;
+        padding: 6000px 0;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .space-container {
+        position: absolute;
+        top: 0;
+    }
+
+        /* RECANTO LENHOSO */
+
+            .planeta-img {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            li {
+                font-family: 'Outer Regular', sans-serif;   
+            }
+
+        /*  */
+
+
+    /*  */
+
+        
+
+    /* SUPERNOVA  */
+
+    /* .supernova {
+        width: 100%;
+        height: 2000px;
+        background: radial-gradient(50% 50% at 50% 50%, #B0EFFF 0%, rgba(0, 204, 255, 0) 100%);
+    } */
+
+    .supernova {
+        width: 100vw;
+    }
+
+/*  */
+
+.img-nomai-mask {
+    background-image: url(../assets/images/mask-1.svg);
+    width: 900px;
+    height: 900px;
+    transition: .5s;
+    background-size: contain;
+}
+
+.img-nomai-mask:hover {
+    background-image: url(../assets/images/mask.svg);
+}
+
+.img-nomai-mask-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.olho {
+    background-image: url(../assets/images/olho-none.svg);
+    background-size: contain;
+    width: 339px;
+    height: 265px;
+    transition: .3s;
+}
+
+.olho:hover {
+    background-image: url(../assets/images/olho-block.svg);
+}
+
+/*  */
+
+
+

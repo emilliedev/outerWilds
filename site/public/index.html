@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style/global.style.css" />
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="shortcut icon" href="assets/favicon/recanto-favicon.png" type="image/x-icon" />
+
+  <script src="scripts/stickyNavbar.js"></script>
+  <script src="scripts/validation.js"></script>
+  <script src="scripts/mini-game.js"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+  <title>Home | Outer Wilds Shack</title>
+</head>
+
+<body onload="teste()" style="background-color: black;">
+  <div class="body">
+    <div class="body-container">
+      <header class="navbar">
+        <div class="container">
+          <section class="menu-items">
+            <a href="index.html"><img src="assets/logo/outer-logo.png" alt="Logo outer wilds" class="logo-outer" /></a>
+            <section class="menu-links">
+              <a href="#astros">
+                <section>Astros</section>
+              </a>
+              <a href="sobre.html">
+                <section>Sobre</section>
+              </a>
+              <a href="login.html">
+                <section>Acessar</section>
+              </a>
+            </section>
+          </section>
+        </div>
+      </header>
+      <main>
+        <div class="hero">
+          <div class="container">
+            <section class="hero-text">
+              <p class="hero-title">Boas vindas <span id="spanBemVindo" class="hero-title">aventureiro!</span></p>
+              <p class="hero-subtitle">
+                Pronto para uma viagem pela vastidão do universo?
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <div class="olho" id="olho1" onclick="contarPontoUm()"></div>
+
+        <div class="container">
+          <div class="about-container">
+            <p class="title-5rem mt-10rem">
+              Sobre <span class="orange-title">Outer Wilds</span>
+            </p>
+            <div class="about-content">
+              <section>
+                <p>
+                  Outer Wilds é um jogo indie de mistério de mundo aberto
+                  sobre um sistema solar preso em um loop temporal inacabável.
+                  O jogo permite que você faça o que quiser sem estar preso em
+                  alguma missão para o jogo prosseguir, você que faz a
+                  história acontecer e investiga o passado do sistema solar
+                  livremente.
+                </p>
+              </section>
+              <div class="mt-5rem planetary-container">
+                <img src="assets/images/solar-system.png" />
+              </div>
+            </div>
+          </div>
+          <p class="mt-10rem color-white title-5rem">Outer Wilds Ventures</p>
+          <div class="hearthians-container mt-5rem">
+            <div class="hearthians-content">
+              <section class="hearthians-image">
+                <img src="assets/images/desaparecidos.webp" style="border-radius: 1rem"/>
+              </section>
+              <section class="hearthians-text-container outer-regular-text color-white regular-text">
+                <p class="about-hearthians outer-regular-text">
+                  A <span class="color-orange weight-bold outer-regular-text regular-text">Outer Wilds Ventures</span> é
+                  uma organização
+                  <span class="color-orange weight-bold outer-regular-text regular-text">
+                    Hearthian</span>
+                  dedicada a aprender sobre o Sistema Solar e sua história. A organização foi fundada por
+                  Hornfels, Gossan, Slate e Feldspato. O paradeiro deles é desconhecido após terem saído com a missão de
+                  desvendar os mistérios do Sistema Solar. Hoje em dia é possível ouvir sons de instrumentos que eram
+                  tocados pelos mesmos por meio de de equipamentos de astronautas.
+                  <br> <br>
+
+                  Os Hearthians é a única (ou acreditam ser) raça existente no sistema solar, sua pele é azul e eles
+                  possuem quatro olhos, três dedos, não possuem pelos e sua característica mais marcante são suas
+                  grandes e pontudas orelhas.
+
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="space-background" id="astros">
+
+          <div class="space-container">
+            <p class="mt-10rem color-white title-5rem">Assar marshmallows, preparar nave, e já!</p>
+            <div class="recanto-lenhoso">
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Recanto lenhoso</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/recanto.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Recanto lenhoso</span>
+                  é o planeta natal dos Hearthians, onde é um lugar muito aconchegante que há uma comunidade muito unida
+                  e que todos se conhecem, mas não se engane, o Recanto também esconde mistérios que revelam um
+                  longínquo passado de antigas civilizações e seus antepassados.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Oxigênio</li>
+                  <li>🔸Observatório e museu do sistema solar</li>
+                  <li>🔸Terra natal Hearthians</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <div class="gemeos-ampulheta">
+              <div style="width: 100%; display: flex; justify-content: end;">
+              <div class="olho" id="olho2" onclick="contarPontoDois()"></div>
+            </div>
+
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Gêmeos da Ampulheta</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/gemeos.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeos da Ampulheta</span>
+                  é um par de planetas que se orbitam entre si e são dependentes um do outro. Um deles é o <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cálido</span> e o outro é o
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Gêmeo Cinzento</span>. Com o
+                  passar do tempo, o Gêmeo cinzento transfere a areia para o Gêmeo Cálido, o que faz com que os segredos
+                  de um deles vá se escondendo, e do outro, revelando.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Transferência de areia</li>
+                  <li>🔸Torres</li>
+                  <li>🔸Tempo limitado para explorar</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <div class="vale-incerto">
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Vale Incerto</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/vale.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Vale Incerto</span>
+                  é um planeta rochoso e oco, e que possui um <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">buraco negro</span> dentro de si.
+                  Esse planeta possui uma lua vulcânica chamada <span
+                    class="outer-regular-text color-orange regular-text weight-bold ">Luzeiro do Vale</span>, que vai
+                  destruindo o planeta aos poucos, fazendo com que lugares que escondem grandes segredos sejam
+                  inacessíveis se você não chega a tempo.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Buraco negro perigoso</li>
+                  <li>🔸Cristais gravitacionais</li>
+                  <li>🔸Instabilidade</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <div class="profundezas-gigante">
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Profundezas do Gigante</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/profundezas.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Profundezas do Gigante</span>
+                  é um planeta gigante aquático, possuindo pequenas ilhas que estão livremente nas águas do planeta,
+                  vários tornados, e uma gravidade fortíssima. Em alguns momentos suas ilhas são consumidas pela água e
+                  devolvidas para o lugar de difícil locomoção, onde tem uma entrada para seu núcleo energizado de um
+                  peciliar acesso.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Instabilidade</li>
+                  <li>🔸Tornados</li>
+                  <li>🔸Núcleo Energizado</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <div class="abrolho-sombrio">
+              <div class="olho" id="olho3" onclick="contarPontoTres()"></div>
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Abrolho Sombrio</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/abrolho.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Abrolho Sombrio</span>
+                  é um planeta que está infectado por uma grande trepadeira, um dos mistérios do jogo que você descobre
+                  ao explorar. Seu interior é imenso e dificultoso para enxergar seu caminho a frente, onde você só
+                  consegue ver luzes que pertencem a gigantes Peixes Tamboril que são cegos mas são guiados por qualquer
+                  tipo de barulho.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Difícil locomoção</li>
+                  <li>🔸Perigoso</li>
+                  <li>🔸Infectado</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <div class="lua-quantica">
+              <div class="container">
+                <p class="mt-10rem color-orange title-5rem">Lua Quântica</p>
+                <div class="planetary-container">
+                  <img src="assets/images/planets/lua.png" class="planeta-img">
+                </div>
+                <p class="outer-regular-text color-white regular-text text-align-center">
+                  <span class="outer-regular-text color-orange regular-text weight-bold ">Lua Quântica</span>
+                  é um misterioso astro que se move para outro lugar toda vez que desviam o olhar, assim como todos os
+                  artigos quânticos que se comportam da mesma forma e que emitem os mesmos sinais.
+                  <br>
+
+                <ul class="outer-regular-text color-white regular-text list text-align-center">
+                  <li>🔸Quântica</li>
+                  <li>🔸Instável</li>
+                  <li>🔸Difícil acesso</li>
+                </ul>
+                </p>
+              </div>
+            </div>
+            <!-- <section class="supernova"></section> -->
+            <section class="supernova">
+              <p class="color-white title-5rem mb-5rem mt-20rem">Mas nada disso importa, pois tudo acaba com...</p>
+              <img src="assets/gifs/Supernova.webp" class="supernova">
+            </section>
+            <section>
+              <p class="mt-10rem color-white title-5rem mb-5rem">Ou melhor, esse fim tem seu recomeço!</p>
+              <div class="img-nomai-mask-container">
+                <a href="#astros">
+                <section>
+              <div class="img-nomai-mask"></div>
+            </section>
+          </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  function teste() {
+    setInterval(intervalo, 20500)
+  }
+  function intervalo() {
+    var listaBemVindo = []
+    listaBemVindo.push('extraterreste!', 'astronauta!', 'piloto!', 'capitão!', 'observador!', 'viajante!', 'explorador!', 'Lareiro!', 'navegador!', 'aventureiro!')
+    for (var x = 0; x < listaBemVindo.length; x++) {
+  
+      (function (x) {
+        setTimeout(function () {
+          spanBemVindo.innerHTML = listaBemVindo[x]
+        }, x * 2050);
+      }(x));
+    }
+  }
+</script>

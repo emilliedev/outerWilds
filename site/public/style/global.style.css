@@ -1,0 +1,232 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/*  */
+
+/* ROOT  */
+
+:root {
+    --outer-deep-blue: #0B1E26;
+    --outer-purple: #6A4D75;
+    --outer-blue: #174E7D;
+    --outer-green: #676E4C;
+    --outer-orange: #FF7D25;
+    --yellow: #d6a200;
+    --outer-cian: #00CAFF;
+    --white: #DAF7FF;
+    --pink: #83366a;
+    --red: #8a2434;
+    --gray: #6f8c97;
+}
+
+.bg-purple {
+    background-color: var(--outer-purple)
+}
+
+.bg-blue {
+    background-color: var(--outer-blue)
+}
+
+.bg-orange {
+    background-color: var(--outer-orange)
+}
+
+.bg-deep-orange {
+    background-color: #d16517;
+}
+
+.bg-green {
+    background-color: var(--outer-green)
+}
+
+.bg-cian {
+    background-color: var(--outer-cian)
+}
+
+.bg-yellow {
+    background-color: var(--yellow)
+}
+
+
+/*  */
+
+/* FONT  */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+@font-face {
+    font-family: 'Outer';
+    src: url(../assets/fonts/itc-serif-gothic-black-588d43e1e915d.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outer Light';
+    src: url(../assets/fonts/itc-serif-gothic-light-588cee8a0bfb1.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Outer Regular';
+    src: url(../assets/fonts/itc-serif-gothic-regular-588cef4e7134b.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*  */
+
+/* FONT FORMAT  */
+
+    .title-5rem {
+        font-size: 5rem;
+        font-family: 'Outer', sans-serif;
+        text-align: center;
+    }
+
+    .color-white {
+        color: white;
+    }
+
+    .color-purple {
+        color: var(--outer-purple);
+    }
+
+    .color-blue {
+        color: var(--outer-blue);
+    }
+
+    .color-green {
+        color: var(--outer-green);
+    }
+
+    .text-align-center {
+        text-align: center;
+    }
+
+    .outer-regular-text {
+        font-family: 'Outer Regular', sans-serif;
+    }
+
+    .outer-black-text {
+        font-family: 'Outer', sans-serif;
+    }
+
+    .outer-light-text {
+        font-family: 'Outer Light', sans-serif;
+    }
+
+    .minor-text {
+        font-size: 1.5rem;
+    }
+
+    .regular-text {
+        font-size: 2rem;
+    }
+
+    .color-orange {
+        color: #F97B1F;
+    }
+
+    .weight-bold {
+        font-weight: 800;
+    }
+
+    .text-align-center {
+        text-align: center;
+    }
+/*  */
+
+/* MARGIN  */
+
+    .mt-20rem {
+        margin-top: 20rem;
+    }
+
+    .mt-10rem {
+        margin-top: 10rem;
+    }
+
+    .mt-5rem {
+        margin-top: 5rem;
+    }
+
+    .mt-1rem {
+        margin-top: 1rem;
+    }
+
+    .mt-1-5rem {
+        margin-top: 1.5rem;
+    }
+
+    .mb-3rem {
+        margin-bottom: 3rem;
+    }
+
+    .mb-5rem {
+        margin-bottom: 5rem;
+    }
+
+    .mt-3rem {
+        margin-top: 3rem;
+    }
+
+    .p-30px {
+        padding: 30px;
+    }
+
+/*  */
+
+/* LINK FORMAT  */
+
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/*  */
+
+/* SCALE  */
+
+.scale-1-03 {
+    transition: 0.5s;
+}
+
+.scale-1-03:hover {
+    scale: 1.03;
+    
+}
+
+/*  */
+
+.width-100 {
+    width: 100%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.font-size-3 {
+    font-size: 3rem;
+}

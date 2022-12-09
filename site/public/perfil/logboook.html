@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="../scripts/charCounter.js"></script>
+    <script src="../scripts/funcoes.js"></script>
+    <script src="../scripts/stickyNavbar.js"></script>
+
+    <link rel="stylesheet" href="../style/global.style.css">
+    <link rel="stylesheet" href="../style/register.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/private.style.css">
+
+    <link rel="shortcut icon" href="../assets/favicon/recanto-favicon.png" type="image/x-icon">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <title>Diário de Bordo | Outer Wilds Shack</title>
+</head>
+
+<body onload="atualizarFeed()" class="body">
+    <header class="navbar">
+        <div class="container">
+            <section class="menu-items">
+                <a href="logboook.html"><img src="../assets/logo/recanto-logo.png" style="width: 150px;"
+                        alt="Logo outer wilds" class="logo-outer" /></a>
+                <section class="menu-links">
+                    <a href="logboook.html" class="scale-1-03">
+                        <section>Diário de Bordo</section>
+                    </a>
+                    <a href="metricas.html" class="scale-1-03">
+                        <section>Métricas</section>
+                    </a>
+                    <section onclick="limparSessao()" class="cursor-pointer scale-1-03">Sair</section>
+                </section>
+            </section>
+        </div>
+    </header>
+    <div class="body-container-private">
+        <div class="hero-private">
+            <div class="container">
+                <section class="hero-text">
+                    <p class="hero-title">Outer Wilds Ventures</p>
+                    <p class="hero-subtitle">
+                        Bem vindo recruta! Pronto para uma incrível experiência de investigações e descobertas?
+                    </p>
+                </section>
+            </div>
+        </div>
+        <div>
+            <main>
+                <div class="container">
+                    <p class="mt-10rem color-white title-5rem">Diário de bordo</p>
+                    <div class="hearthians-text-container outer-regular-text color-white regular-text">
+                        <p class="outer-regular-text color-white text-align-center mt-5rem">Diário de bordo é um
+                            registro onde você poderá guardar todas suas descobertas e especificar onde viu, com direito
+                            a colocar título, escolher o lugar e a descrição, e tudo isso terá o horário e dia que foi
+                            publicado. Há também as funções de deletar e editar, divirta-se investigando e juntando as
+                            peças!
+                        </p>
+                    </div>
+                    <form id="postForm" method="post" onsubmit="return publicar()" class="area-diario mt-10rem">
+                        <section class="form-section">
+                            <span class="label-diario color-white outer-regular-text regular-text">Título</span><br>
+                            <input type="text" name="iptTitulo" id="iptTitulo" class="ipt-form mb-3rem" maxlength="100">
+                            <span class="label-diario color-white outer-regular-text regular-text">Local</span><br>
+                            <select id="slcLugar" class=" mb-3rem select minor-text outer-regular-text">
+                                <option class="option" id="teste" value="1">Recanto Lenhoso</option>
+                                <option class="option" value="2">Gêmeo Cálido</option>
+                                <option class="option" value="3">Gêmeo Cinzento</option>
+                                <option class="option" value="4">Vale Incerto</option>
+                                <option class="option" value="5">Abrolho Sombrio</option>
+                                <option class="option" value="6">Profundezas do Gigante</option>
+                                <option class="option" value="7">Lua Quântica</option>
+                                <option class="option" value="8">Estação Solar</option>
+                                <option class="option" value="9">Cometa Xereta</option>
+                                <option class="option" value="10">Luzeiro do Vale</option>
+                            </select>
+                            <section>
+                                <textarea onkeyup="charCount(this.value)" name="txtDescription" id="txtDescription"
+                                    cols="30" maxlength="500" rows="5" class="ipt-form textarea"></textarea>
+                                <div class="contador-container">
+                                    <section id="contador500" class="color-white outer-regular-text minor-text">500
+                                    </section>
+                                </div>
+                            </section>
+                            <section>
+                                <button
+                                    class="button-100 mt-3rem minor-text outer-black-text color-white scale-1-03">Registrar</button>
+                            </section>
+                        </section>
+                    </form>
+                    <p class="mt-10rem color-white title-5rem">Registros</p>
+                    <div class="container-feed color-white">
+                        <div id="feed_container" class="feed-container">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+</body>
+
+</html>
+
+<script>
+
+function alertSucesso() {
+                        Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Diário publicado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    }
+
+    var idUsuario = sessionStorage.getItem('ID_USUARIO');
+    var lugar = sessionStorage.getItem('FK_LUGAR');
+
+    function publicar() {
+        console.log(idUsuario)
+        var lugar = slcLugar.value;
+
+        var corpo = {
+            lugar: lugar,
+            titulo: postForm.iptTitulo.value,
+            descricao: postForm.txtDescription.value,
+            idUsuario: idUsuario
+        }
+
+        fetch(`/diario/publicar`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // window.alert("Post realizado com sucesso com usuário de ID: " + idUsuario + "!");
+
+                alertSucesso()
+                setTimeout(() => {
+                window.location = "logboook.html";
+                }, "2000")
+                // limparFormulario();
+                //finalizarAguardar();
+                sessionStorage.FK_LUGAR = json.fkLugar;
+                sessionStorage.DESCRICAO_DIARIO = json.descricaoDiario;
+                sessionStorage.TITULO_DIARIO = json.tituloDiario;
+                sessionStorage.ID_DIARIO = json.idDiario;
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            //finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function editar(idDiario) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idDiario;
+        console.log("cliquei em editar - " + idDiario);
+        // window.alert("Você será redirecionado à página de edição do diário de id número: " + idDiario);
+        window.location = "../edicaoDiario2.html"
+    }
+    function alertSucessoDeletado() {
+                        Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registro deletado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    }
+    function deletar(idDiario) {
+        console.log("Criar função de apagar post escolhido - ID" + idDiario);
+        fetch(`/diario/deletar/${idDiario}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                alertSucessoDeletado()
+                setTimeout(() => {
+                window.location = "logboook.html";
+                }, "2000")
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarFeed() {
+        //aguardar();
+
+        fetch(`/diario/listar/${idUsuario}`).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "<div class='none-results'><span class='none-results-span outer-regular-text regular-text'>Cri, cri, cri...</span><img src='../assets/gifs/fire-pit.gif' width='500px'></div>"
+                    feed.appendChild(mensagem);
+                    throw "<div class='none-results'><span class='none-results-span outer-regular-text regular-text'>Cri, cri, cri...</span><img src='../assets/gifs/fire-pit.gif' width='500px'></div>";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var btnEditar = document.createElement("div");
+                        var btnDeletar = document.createElement("div");
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanTitulo = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+                        var divButtons = document.createElement("div");
+
+                        var spanLugar = document.createElement("span");
+
+                        btnEditar.innerHTML = "<img src='../assets/favicon/edit.svg'>"
+                        btnDeletar.innerHTML = "<img src='../assets/favicon/delete.svg'>"
+                        spanTitulo.innerHTML = "<span class= 'publicacao-label-titulo'>Título: </span> <span class='publicacao-titulo'>" + publicacao.titulo + "</span>"
+                        divDescricao.innerHTML = "<span class= 'publicacao-label-titulo'>Descrição: <span class='publicacao-titulo'>" + publicacao.descricao + "</span>"
+
+                        spanLugar.innerHTML = "<span class= 'publicacao-label-titulo'>Local: </span> <span class='publicacao-titulo'>" + publicacao.nome + "</span>"
+
+                        divButtons.className = "div-buttons"
+                        divPublicacao.className = "publicacao mb-3rem";
+                        spanTitulo.id = "inputNumero" + publicacao.idDiario;
+                        spanTitulo.className = "publicacao-titulo";
+                        spanLugar.className = "publicacao-titulo";
+                        divDescricao.className = "publicacao-titulo mt-3rem mb-3rem";
+
+                        spanLugar.id = 'spanLugar' + publicacao.diario;
+
+                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.id = "btnEditar" + publicacao.idDiario;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idDiario})`);
+
+                        btnDeletar.className = "publicacao-btn-deletar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idDiario;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idDiario})`);
+
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+
+                        divPublicacao.appendChild(spanLugar);
+                    }
+
+                    //finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            //finalizarAguardar();
+        });
+    }
+
+    function testar() {
+        //aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+        divResultado.innerHTML = formulario.get("descricao");
+
+        //finalizarAguardar();
+
+        return false;
+    }
+
+</script>
