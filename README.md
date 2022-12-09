@@ -57,5 +57,5 @@ https://user-images.githubusercontent.com/110927737/206602830-c26db567-7c97-4fbc
 
 <div align=center>
   <h3> 👋🏽 Contato </h3>
-  <a href="[https://www.linkedin.com/in/helena-mirandas/](https://www.linkedin.com/in/emiole/)"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/emiole"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
 </div>
