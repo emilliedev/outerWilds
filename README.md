@@ -3,25 +3,6 @@
 
 ### Outer Wilds Shack é um ambiente aconchegante e intuitivo que te instiga a sempre registrar suas viagens, aventuras e descobertas dentro do jogo, trazendo uma experiência única onde você que tira as conclusões até desvendar os enormes segredos que o jogo oculta. Ele oferece um espaço privado para cadastrar, editar e deletar diários de bordo! E tudo isso gera métricas exclusivas que dizem seu desempenho no jogo de acordo com a quantidade de cadastros, com direito a gráficos, KPI e definição do seu tipo de perfil de aventureiro!
 
-<h3>
-   
-<details>
-
-   <summary>
-     <b> 📘 Sumário </b> 
-   </summary>
-
-   <br>
-   
-  [a](#-a) <br>
-  [Funcionalidades](#-Funcionalidades-aplicadas) <br>
-  [Conclusão](#-Conclusão) <br>
-
-
-</details>
-   
-</h3>
-
 <h1 align=center>🔥Acenda a fogueira, prepare seus marshmallows e vamos para uma rápida imersão neste universo🔥</h1>
 
 
