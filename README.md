@@ -12,7 +12,7 @@
 
    <br>
    
-  [Skills necessárias](#-skills-necessárias) <br>
+  [Requisitos técnicos](#-principais-requisitos-técnicos-utilizados) <br>
   [Requisitos técnicos](#-principais-requisitos-técnicos-utilizados) <br>
   [Funcionalidades](#-Funcionalidades-aplicadas) <br>
   [Conclusão](#-Conclusão) <br>
